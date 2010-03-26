@@ -15,7 +15,7 @@
 \section{Introduzione}
 La probabilità è la branca della matematica che studia i possibili esiti di eventi dati insieme alle relative verosimiglianze e distribuzioni.
 
-Nell'uso comune, il termine ``probabilità'' è usato per indicare la possibilità che un evento particolare (o un insieme di eventi) si verificherà, espressa su una scala lineare da 0 (impossibilità) a 1 (certezza), espressa anche come una percentuale compresa tra 0 e il 100\%.
+Nell'uso comune, il termine ``probabilità'' è usato per indicare la possibilità che un evento particolare (o un insieme di eventi) si verificherà, espressa su una scala lineare da 0 (impossibilità) a 1 (certezza) o come una percentuale compresa tra 0 e 100\%.
 L'analisi degli eventi disciplinati dalla probabilità si chiama statistica.
 % TODO accennare a De Finetti
 
@@ -39,7 +39,9 @@ Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conos
 \end{definition}
 
 \begin{definition}[Indipendenza logica tra numeri aleatori]
-  I numeri aleatori $X_1, \ldots, X_n$ si dicono logicamente indipendenti se $$I(X_1, \ldots, X_n) = I(X_1) \times \ldots \times I(X_n)$$
+  I numeri aleatori $X_1, \ldots, X_n$ si dicono logicamente indipendenti se
+  \marginnote{Il simbolo $\times$ denota il prodotto scalare.}
+  \[ I(X_1, \ldots, X_n) = I(X_1) \times \ldots \times I(X_n) \]
 \end{definition}
 
 \begin{definition}[Operazioni sui numeri aleatori]
@@ -55,7 +57,7 @@ Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conos
   \[ \tilde{X} \equiv 1 - X \]
 \end{definition}
 
-\begin{proposition}[Proprietà delle operazioni sui numeri aleatori]{\ \\} % trick per aggiungere un a-capo in più
+\begin{definition}[Proprietà delle operazioni sui numeri aleatori]{\ \\} % trick per aggiungere un a-capo in più
   Distributiva:
   \begin{align*}
     X \vee (Y \wedge Z) = (X \vee Y) \wedge (X \vee Z) \\
@@ -74,17 +76,15 @@ Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conos
     X \wedge Y = Y \wedge X
   \end{align*}
 
-
   Involutiva:
   \[ \tilde{\tilde{X}} = X \]
-  
+
   De Morgan:
   \begin{align*}
     (X \vee Y) \; \tilde{} = \tilde{X} \wedge \tilde{Y} \\
     (X \wedge Y) \; \tilde{} = \tilde{X} \vee \tilde{Y}
   \end{align*}
-
-\end{proposition}
+\end{definition}
 
 \section{Eventi}
 \begin{definition}[Evento]\label{def:evento}
@@ -96,7 +96,7 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
 
 \begin{definition}[Proprietà degli eventi]
   Per \( E_1, \ldots, E_n \) eventi
-  
+
   Incompatibilità: \( \vdash E_1  \cdots E_n = 0 \)
   \marginnote{Il simbolo $\vdash$ indica che la proposizione seguente è sicuramente vera}
 
@@ -184,7 +184,7 @@ Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
 \begin{definition}[Previsione]
   Esprime l'equivalente certo del fenomeno casuale rappresentato da un numero aleatorio $X$, e si denota con $\pr(X)$. La previsione
   \footnote{detta anche media, attesa o speranza.
-  Nel caso che $X$ sia un evento viene chiamata probabilità, vedi definizione \ref{def:probabilita}.}
+    Nel caso che $X$ sia un evento viene chiamata probabilità, vedi definizione \ref{def:probabilita}.}
   non è oggettiva ma dipende dal nostro stato di informazione e dalla nostra valutazione.
 \end{definition}
 
@@ -307,7 +307,7 @@ Per una partizione: % TODO queste non sono altre proprietà?
   \[ \pr(E) = \frac{\text{\# casi favorevoli}}{\text{\# casi possibili}} \]
 \end{proposition}
 
-Dunque la probabilità che si verifichi un determinato evento di una partizione di eventi equiprobabili è 
+Dunque la probabilità che si verifichi un determinato evento di una partizione di eventi equiprobabili è
 \[ \pr(E_i) = \frac{1}{n} \]
 
 \subsection{Probabilità e previsione subordinata}
@@ -346,7 +346,7 @@ che seguono allo stesso modo dal principio di coerenza.
 
 \begin{proof}
   Poniamo \( z = \pr(AB) \), \( x = \pr(A) \) e \( y = \pr(B|A) \).
-  
+
   Quindi, se supponiamo una scommessa su tutti i valori otteniamo:
   \begin{align*}
     G &= c_1 (A - x) + c_2 A (B - y) + c_3 (AB - z) \\
@@ -443,7 +443,7 @@ Se $E$ è correlato positivamente con $H$, si ha che \( \tilde{E} \) è correlat
 \subsection{Indipendenza stocastica}
 Se due eventi non sono correlati\footnote{vedi definizione \ref{def:eventi_non_correlati}} sono \emph{stocasticamente indipendenti}, mentre il contrario non è sempre vero.
 \marginnote{Stocastico viene dal greco stochastikós ``congetturale'', e significa ``relativo al calcolo delle probabilità''.
-Talvolta l'indipendenza stocastica viene chiamata indipendenza statistica.}
+  Talvolta l'indipendenza stocastica viene chiamata indipendenza statistica.}
 Generalizzando possiamo dire che:
 \begin{definition}[Indipendenza stocastica]
   $n$ eventi \( E_1, \ldots, E_n \) sono stocasticamente indipendenti se:
@@ -481,7 +481,6 @@ La definizione è analoga per gli eventi subordinati:
   \item \emph{non correlati}\footnote{vedi definizione \ref{def:eventi_non_correlati}} se \( \cov(X,Y) = 0 \)
   \end{itemize}
 \end{proposition}
-
 
 \subsection{Varianza}
 \begin{definition}[Varianza]\label{def:varianza}
@@ -543,7 +542,7 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
 
 \begin{proof}
   La proprietà della varianza segue dalla trasformazione lineare della covarianza\footnote{vedi proposizione \ref{pro:trasformazione_lineare_covarianza}} sostituendo \( (cY + d) \) con \( (aX + b) \).
-\end{proof}  
+\end{proof}
 
 \section{Regressione Lineare} % TODO organizzare
 \begin{definition}[Regressione lineare]
