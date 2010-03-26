@@ -1,0 +1,691 @@
+%!TEX root = appunti.tex
+%!TEX encoding = UTF-8 Unicode
+%
+%  Appunti di Calcolo delle Probabilità e Statistica
+%
+%  Copyright (c) 2010 Carmine Paolino. Some rights reserved.
+%
+%  This work is licensed under the Creative Commons
+%  Attribution-Noncommercial-Share Alike 2.5 Italy License. To view a copy of
+%  this license, visit http://creativecommons.org/licenses/by-nc-sa/2.5/it/ or
+%  send a letter to Creative Commons, 171 Second Street, Suite 300,
+%  San Francisco, California, 94105, USA.
+%
+\chapter{Numeri aleatori}
+\section{Introduzione}
+La probabilità è la branca della matematica che studia i possibili esiti di eventi dati insieme alle relative verosimiglianze e distribuzioni.
+
+Nell'uso comune, il termine ``probabilità'' è usato per indicare la possibilità che un evento particolare (o un insieme di eventi) si verificherà, espressa su una scala lineare da 0 (impossibilità) a 1 (certezza), espressa anche come una percentuale compresa tra 0 e il 100\%.
+L'analisi degli eventi disciplinati dalla probabilità si chiama statistica.
+% TODO accennare a De Finetti
+
+\newthought{Gli oggetti fondamentali} della probabilità sono i numeri aleatori\footnote{detti anche variabili casuali, variabili aleatorie o variabili stocastiche}.
+
+\begin{definition}[Numero aleatorio]
+  Un numero ben determinato ma non noto per mancanza di informazioni.
+\end{definition}
+È pratica comune denotare i numeri aleatori con le lettere maiuscole (più comunemente $X$).
+L'\emph{insieme dei valori possibili} che $X$ può assumere viene denotato con $I(X)$.
+
+Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conosciute dove $I(X)$ contiene un solo elemento.
+
+\begin{definition}[Continuità dei numeri aleatori]
+  Un numero aleatorio $X$ si dice
+  \begin{itemize}
+  \item \emph{limitato superiormente} se \( \sup I(X) < + \infty \)
+  \item \emph{limitato inferiormente} se \( \inf I(X) > - \infty \)
+  \item \emph{limitato} se limitato superiormente e inferiormente
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Indipendenza logica tra numeri aleatori]
+  I numeri aleatori $X_1, \ldots, X_n$ si dicono logicamente indipendenti se $$I(X_1, \ldots, X_n) = I(X_1) \times \ldots \times I(X_n)$$
+\end{definition}
+
+\begin{definition}[Operazioni sui numeri aleatori]
+  Oltre alle canoniche operazioni aritmetiche, i numeri aleatori presentano le seguenti operazioni:
+
+  Somma logica:
+  \[ X \vee Y \equiv \max(X,Y) \]
+
+  Prodotto logico:
+  \[ X \wedge Y \equiv \min(X,Y) \]
+
+  Complementazione:
+  \[ \tilde{X} \equiv 1 - X \]
+\end{definition}
+
+\begin{proposition}[Proprietà delle operazioni sui numeri aleatori]{\ \\} % trick per aggiungere un a-capo in più
+  Distributiva:
+  \begin{align*}
+    X \vee (Y \wedge Z) = (X \vee Y) \wedge (X \vee Z) \\
+    X \wedge (Y \vee Z) = (X \wedge Y) \vee (X \wedge Z)
+  \end{align*}
+
+  Associativa:
+  \begin{align*}
+    X \vee (Y \vee Z) = (X \vee Y) \vee Z \\
+    X \wedge (Y \wedge Z) = (X \wedge Y) \wedge Z
+  \end{align*}
+
+  Commutativa:
+  \begin{align*}
+    X \vee Y = Y \vee X \\
+    X \wedge Y = Y \wedge X
+  \end{align*}
+
+
+  Involutiva:
+  \[ \tilde{\tilde{X}} = X \]
+  
+  De Morgan:
+  \begin{align*}
+    (X \vee Y) \; \tilde{} = \tilde{X} \wedge \tilde{Y} \\
+    (X \wedge Y) \; \tilde{} = \tilde{X} \vee \tilde{Y}
+  \end{align*}
+
+\end{proposition}
+
+\section{Eventi}
+\begin{definition}[Evento]\label{def:evento}
+  Caso particolare di numero aleatorio, dove \( I(E) \subseteq {0,1} \).
+\end{definition}
+Per dichiarare un evento si usa la seguente sintassi:
+\[ E = (\text{condizione}) \]
+che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E = 0 \).
+
+\begin{definition}[Proprietà degli eventi]
+  Per \( E_1, \ldots, E_n \) eventi
+  
+  Incompatibilità: \( \vdash E_1  \cdots E_n = 0 \)
+  \marginnote{Il simbolo $\vdash$ indica che la proposizione seguente è sicuramente vera}
+
+  Esaustività: \( \vdash E_1 + \ldots + E_n \geq 1 \)
+
+  Partizione\footnote{anche detti eventi mutuamente esclusivi}: \( \vdash E_1 + \ldots + E_n = 1 \)
+\end{definition}
+
+\begin{proposition}[Operazioni su eventi]{\ \\}
+  Somma logica:
+  \[ E \vee F = E + F - EF \]
+
+  Prodotto logico:
+  \[ E \wedge F = EF \]
+\end{proposition}
+\begin{proof}
+  Somma logica:
+  \begin{equation*}
+    \begin{split}
+      E \vee F &= (E \vee F) ~ \tilde{} ~ \tilde{} \\
+      &= (\tilde{E} \wedge \tilde{F}) ~ \tilde{} \\
+      &= ((1-E)(1-F)) ~ \tilde{} \\
+      &= (1 - E - F + EF) ~ \tilde{} \\
+      &= 1 - 1 + E + F - EF \\
+      &= E + F - EF
+    \end{split}
+  \end{equation*}
+
+  Prodotto logico:
+  \begin{equation*}
+    \begin{split}
+      E \vee F \vee G &= (E \vee F \vee G) ~ \tilde{} ~ \tilde{} \\
+      &= ((1 - E)(1 - F)(1 - G)) ~ \tilde{} \\
+      &= (1 - F - E - G + EF + FG + EG - EFG) ~ \tilde{} \\
+      &= 1 - 1 + F + E + G - EF - FG - EG + EFG \\
+      &= F + E + G - EF - FG - EG + EFG
+    \end{split}
+  \end{equation*}
+\end{proof}
+
+\subsection{Costituenti}
+\begin{definition}[Costituente]
+  Si definisce costituente di \( E_1, \ldots, E_n \) l'evento \( Q = E_1^*, \ldots, E_n^* \) dove
+  \begin{equation*}
+    E_i^* =
+    \begin{cases}
+      E_i \\
+      \tilde{E_i}
+    \end{cases}
+  \end{equation*}
+\end{definition}
+
+Sono possibili tutti i costituenti solo se gli $E_i$ sono logicamente indipendenti.
+
+Il numero dei costituenti possibili è sempre \( \leq 2^n \), eguaglia \( 2^n \) solo nel caso un cui siano tutti logicamente indipendenti.
+
+\begin{definition}[Tipologie di costituenti]
+  I costituenti, rispetto ad un evento $E$, possono essere di:
+  \begin{itemize}
+  \item \emph{I tipo} quando \( Q \subset E \)
+    \marginnote{$E$ si verifica}
+
+  \item \emph{II tipo} quando \( Q \subset \tilde{E} \)
+    \marginnote{$E$ non si verifica}
+
+  \item \emph{III tipo} altrimenti
+    \marginnote{non lo sappiamo}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Indipendenza logica tramite costituenti]
+  Si dice che l'evento $E$ è:
+  \begin{itemize}
+  \item \emph{logicamente dipendente} da \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del I o del II tipo
+  \item \emph{logicamente indipendente} da \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del III tipo
+  \item \emph{logicamente semidipendente} da \( E_1, \ldots, E_n \) altrimenti
+  \end{itemize}
+\end{definition}
+
+Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
+\[ E = \sum_{Q \subset E} Q \]
+
+\section{Previsione e probabilità}
+\subsection{Previsione}
+\begin{definition}[Previsione]
+  Esprime l'equivalente certo del fenomeno casuale rappresentato da un numero aleatorio $X$, e si denota con $\pr(X)$. La previsione
+  \footnote{detta anche media, attesa o speranza.
+  Nel caso che $X$ sia un evento viene chiamata probabilità, vedi definizione \ref{def:probabilita}.}
+  non è oggettiva ma dipende dal nostro stato di informazione e dalla nostra valutazione.
+\end{definition}
+
+Per quantificarla possiamo usare due metodi:
+\begin{enumerate}
+\item \emph{Metodo della scommessa}: scegliamo un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno aleatorio proporzionale a \( X -\bar{x} \):
+  \[ \lambda(X-\bar{x}) \]
+  dove \( \lambda \in \mathbb{R} \) è un coefficiente di proporzionalità.
+  La scelta di $\bar{x}$ non è completamente arbitraria, deve rispettare un \emph{principio di coerenza}:
+  la scelta va fatta in modo che non debba essere possibile una proposta che porti ad una perdita certa.
+  \footnote{la dimostrazione della proposizione \ref{pro:monotonia_previsione} contiene i casi in cui si hanno perdite certe.}
+
+  % TODO chiarificare o eliminare
+\item \emph{Metodo della penalità}: con \( \pr(X) = \bar{\bar{x}} \):
+  \[ - \lambda(X - \bar{\bar{x}})^2 \]
+  \emph{Principio di coerenza}: non deve esistere un valore $\bar{\bar{x}}$ tale che la corrispondente penalità sia sicuramente minore.
+\end{enumerate}
+
+\newthought{Le seguenti proprietà} seguono dal principio di coerenza:
+
+\begin{proposition}[Monotonia della previsione]\label{pro:monotonia_previsione}
+  \[ \inf I(X) \leq \pr(X) \leq \sup I(X) \]
+\end{proposition}
+
+\begin{proof}
+  Supponendo che \( \bar{x} < \inf I(X) \), allora per \( \lambda < 0 \):
+  \[ \vdash \lambda(X - \bar{x}) < 0 \]
+  Perché $\lambda$ è una quantità negativa, e \( (X - \bar{x}) \) positiva.
+
+  Se invece supponiamo \( \bar{x} > \sup I(X) \), allora per \( \lambda > 0 \):
+  \[ \vdash \lambda(X - \bar{x}) < 0 \]
+  Perché $\lambda$ è una quantità positiva, e \( (X - \bar{x}) \) negativa.
+
+  Ne segue che per non avere perdite certe:
+  \[ \inf I(X) \leq \pr(X) \leq \sup I(X) \]
+\end{proof}
+
+\begin{proposition}[Linearità della previsione]\label{pro:linearita_previsione}
+  \[ X = \alpha_1 X_1 + \ldots + \alpha_n X_n \Rightarrow \alpha_1 \pr(X_1) + \ldots + \alpha_n \pr(X_n) \]
+\end{proposition}
+
+\begin{proof}
+  Consideriamo il numero aleatorio \( Z = X + Y \) e posti \( \bar{z} = \pr(Z) \), \( \bar{x} = \pr(X) \) e \( \bar{y} = \pr(Y) \), sia \( G \) il guadagno
+  \begin{align*}
+    G &= c_1(X - \bar{x}) + c_2(Y - \bar{y}) + c_3(Z - \bar{z}) \\
+    &= c_1(X - \bar{x}) + c_2(Y - \bar{y}) + c_3(X + Y - \bar{z}) \\
+    &= X(c_1 + c_3) + Y(c_2 + c_3) - c_1\bar{x} - c_2\bar{y} - c_3\bar{z}
+  \end{align*}
+
+  Ponendo \( c_1 = c_2 = - c_3 \) annulliamo la parte aleatoria:
+  \begin{align*}
+    G &= c_3 \bar{x} + c_3 \bar{y} - c_3 \bar{z} \\
+    &= c_3(\bar{x} + \bar{y} - \bar{z})
+  \end{align*}
+
+  Per evitare che si possa scegliere $c_3$ in modo che \( \vdash G < 0 \):
+  \begin{align*}
+    & \bar{x} + \bar{y} - \bar{z} = 0 \\
+    \Rightarrow ~ & \bar{z} = \bar{x} + \bar{y} \\
+    \Rightarrow ~ & \pr(Z) = \pr(X) + \pr(Y)
+  \end{align*}
+
+  Ricapitolando: \( Z = X + Y \Rightarrow \pr(Z) = \pr(X) + \pr(Y) \).
+\end{proof}
+
+Per i numeri aleatori illimitati\footnote{quelli per cui \( \inf I(X) \), \( \sup I(X) \) o entrambi non esistono finiti} può non esistere nessun valore finito corrispondente alla nostra valutazione di \( \pr(X) \).
+
+\begin{proposition}[Calcolare la previsione]
+  Supponiamo di avere un numero aleatorio $X$ dove \( I(X) = \{ X_1, \ldots, X_n \} \), una funzione \( \phi : \mathbb{R} \to \mathbb{R} \) e sia \( E_i \equiv (X = x_i) \), allora vale che:
+  \[ \pr(\phi(X)) = \sum_{i=1}^{n} \phi(x_i) \pr(X = x_i) \]
+\end{proposition}
+
+\begin{proof}
+  \begin{align*}
+    \pr(\phi(X)) &= \pr(\phi(X) \cdot 1) \\
+    &= \pr(\phi(X)(E_1 + \ldots + E_n)) \\
+    &= \pr(\phi(X) E_1) + \ldots + \pr(\phi(X) E_n) \\
+    &= \sum_{i=1}^{n} \pr(\phi(X) E_i) \\
+    &= \sum_{i=1}^{n} \pr(\phi(x_i) E_i) \\ % TODO commentare questo passaggio
+    &= \sum_{i=1}^{n} \phi(x_i) \pr(E_i) \\
+    &= \sum_{i=1}^{n} \phi(x_i) \pr(X = x_i)
+  \end{align*}
+\end{proof}
+
+\subsection{Probabilità}
+\begin{definition}[Probabilità]\label{def:probabilita}
+  Dato un evento \( E \), \( \pr(E) \) si chiama anche probabilità di \( E \).
+\end{definition}
+
+\begin{proposition}[Proprietà della probabilità]
+  Dalla monotonia della previsione\footnote{vedi proposizione \ref{pro:monotonia_previsione}} e dalla definizione di evento\footnote{vedi definizione \ref{def:evento}} segue che:
+  \marginnote{Se \( E \equiv 0 \), \( E \) è un evento impossibile. Quando \( E \equiv 1 \), \( E \) è un evento certo.}
+  \begin{gather*}
+    0 \le \pr(E) \le 1 \\
+    E \equiv 0 \Rightarrow \pr(E) = 0 \\
+    E \equiv 1 \Rightarrow \pr(E) = 1
+  \end{gather*}
+\end{proposition}
+
+\begin{proposition}[Operazioni sulle probabilità]
+  Dalla linearità della previsione\footnote{vedi proposizione \ref{pro:linearita_previsione}}:
+
+  Somma:
+  \[ \pr(E_1 + E_2) = \pr(E_1) + \pr(E_2) \]
+
+  Somma logica:
+  \[ \pr(E_1 \vee E_2) = \pr(E_1 + E_2 - E_1 E_2) \Rightarrow \pr(E_1 \vee E_2) \le \pr(E_1 + E_2) \]
+\end{proposition}
+
+Per la monotonia della previsione\footnote{vedi proposizione \ref{pro:monotonia_previsione}} si ha che:
+\[ \vdash E_1 \vee E_2 \le E_1 + E_2 \Rightarrow \pr(E_1 \vee E_2) \le \pr(E_1 + E_2) \]
+
+Per una partizione: % TODO queste non sono altre proprietà?
+\[ \vdash E_1 + \ldots + E_n = 1 \Rightarrow \sum \pr(E_i) = 1 \]
+
+\begin{proposition}[Calcolare la probabilità]
+  Per ogni evento $E$ logicamente dipendente\footnote{ovvero \( \forall i, 1 \le i \le n, E_i \subset E \)} da una partizione \( E_1, \ldots, E_n \), la probabilità di $E$ sarà pari a:
+  \[ \pr(E) = \frac{\#\{i|E_i \subset E\}}{n} \]
+  che non è altro che la nota formula
+  \[ \pr(E) = \frac{\text{\# casi favorevoli}}{\text{\# casi possibili}} \]
+\end{proposition}
+
+Dunque la probabilità che si verifichi un determinato evento di una partizione di eventi equiprobabili è 
+\[ \pr(E_i) = \frac{1}{n} \]
+
+\subsection{Probabilità e previsione subordinata}
+\begin{definition}[Previsione subordinata]
+  La previsione subordinata\footnote{detta anche previsione condizionata} di un numero aleatorio $X$ rispetto ad un evento $E$, denotata con \( \pr(X|E) \), è la previsione di $X$ sapendo che $E$ si sia verificato.
+\end{definition}
+
+Tramite il \emph{metodo della scommessa} possiamo calcolare il guadagno:
+\[ G = \lambda E (X - \bar{x}) \]
+La definizione data è molto simile a quella della previsione, alla quale la moltiplicazione per l'evento $E$ dona le seguenti caratteristiche:
+\begin{itemize}
+\item Se $E$ si verifica allora anche $X$ può verificarsi, e il guadagno è lo stesso della previsione non subordinata.
+\item Se $E$ non si verifica la scommessa è annullata e \( G = 0 \).
+\end{itemize}
+
+Inoltre \( I(X|E) \subset I(X) \).
+
+\newthought{Valgono le stesse proprietà} della previsione:
+\begin{definition}[Monotonia]\label{pro:monotonia_previsione_subordinata}
+  \[ \inf I(X|H) \le \pr(X|H) \le \sup I(X|H) \]
+\end{definition}
+
+\begin{definition}[Linearità]\label{pro:linearita_previsione_subordinata}
+  \[ \pr(X + Y|H) = \pr(X|H) + \pr(Y|H) \]
+  \[ \pr(\alpha X|H) = \alpha \pr(X|H) \]
+\end{definition}
+
+che seguono allo stesso modo dal principio di coerenza.
+
+\subsection{Probabilità composta}
+\begin{theorem}[Probabilità composta]\label{thm:probabilita_composta}
+  Dati due eventi $A$ e $B$, si ha che:
+  \marginnote{In alcuni testi la probabilità composta si denota con \( \pr(A\cap B) \)}
+  \[ \pr(AB) = \pr(A)\pr(B|A) = \pr(B)\pr(A|B) \]
+\end{theorem}
+
+\begin{proof}
+  Poniamo \( z = \pr(AB) \), \( x = \pr(A) \) e \( y = \pr(B|A) \).
+  
+  Quindi, se supponiamo una scommessa su tutti i valori otteniamo:
+  \begin{align*}
+    G &= c_1 (A - x) + c_2 A (B - y) + c_3 (AB - z) \\
+    &= c_1A - c_1 x + c_2 AB - c_2 Ay + c_3 AB - c_3 z \\
+    &= A(c_1 + c_2 B - c_2 y + c_3 B) - c_1 x - c_3 z \\
+    &= A(c_1 + (c_2 + c_3)B - c_2 y) - c_1 x - c_3 z
+  \end{align*}
+  A questo punto basta porre \( c_2 = - c_3 \) e \( c_1 = c_2 y \) per annullare la parte aleatoria:
+  \begin{align*}
+    G &= - c_1 x - c_3 z \\
+    &= c_2 (z - xy)
+  \end{align*}
+
+  Per evitare di violare il principio di coerenza dobbiamo avere:
+  \[ z = xy \Rightarrow \pr(AB) = \pr(A) \pr(B|A) \]
+\end{proof}
+
+Se gli eventi sono indipendenti si ha che \( \pr(B|A) = \pr(B) \) e analogamente \( \pr(A|B) = \pr(A) \). Proprietà da cui discende il seguente corollario:
+\begin{corollary}[Probabilità composta di eventi indipendenti]
+  Dati due eventi $A$ e $B$ logicamente indipendenti, si ha che:
+  \[ \pr(AB) = \pr(A)\pr(B) \]
+\end{corollary}
+
+Il teorema della probabilità composta può essere generalizzato alla previsione:
+\begin{corollary}[Previsione composta]
+  Dati due numeri aleatori $X$ ed $Y$, si ha che:
+  \[ \pr(XY) = \pr(Y)\pr(X|Y) = \pr(X)\pr(Y|X) \] % TODO sicuro?
+\end{corollary}
+La dimostrazione è analoga al teorema della probabilità composta\footnote{vedi teorema \ref{thm:probabilita_composta}}.
+
+\subsection{Probabilità totale}
+Il teorema della probabilità totale è utile per valutare la previsione conoscendo la previsione subordinata.
+
+\begin{theorem}[Probabilità totale]\label{thm:probabilita_totale}
+  Sia \( E_1, \ldots, E_n \) una partizione e $X$ un numero aleatorio. Vale che:
+  \[ \pr(X) = \sum_{i = 1}^{n} \pr(X|E_i)\pr(E_i) \]
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    \pr(X) &= \pr(X \cdot 1) \\
+    &= \pr(X(E_1 + \ldots + E_n)) \\
+    &= \pr(XE_1 + \ldots + XE_n) \\
+    &= \sum_{i=1}^{n} \pr(XE_i) \\
+    &= \sum_{i=1}^{n} \pr(X|E_i)\pr(E_i)
+  \end{align*}
+\end{proof}
+
+\subsection{Teorema di Bayes}
+\begin{theorem}[Teorema di Bayes]
+  Dati due eventi $A$ ed $B$, con \( \pr(A) > 0 \), si ha:
+  \[ \pr(B|A) = \frac{\pr(A|B)\pr(B)}{\pr(A)} \]
+\end{theorem}
+
+\begin{proof}
+  Dal teorema della probabilità composta\footnote{vedi teorema \ref{thm:probabilita_composta}} si ha che:
+  \begin{gather*}
+    \pr(AB) = \pr(A)\pr(B|A) \\
+    \Rightarrow \pr(B|A) = \frac{\pr(AB)}{\pr(A)} = \frac{\pr(A|B)\pr(B)}{\pr(A)}
+  \end{gather*}
+\end{proof}
+
+\subsection{Correlazione tra eventi}
+\begin{definition}[Eventi correlati positivamente]
+  \label{def:eventi_correlati_positivamente}
+  Un evento $E$ si dice correlato positivamente con $H$ se
+  \[ \pr(E|H) > \pr(E) \]
+  oppure, se \( \pr(H) > 0 \) e \( \pr(E) > 0 \)
+  \[ \pr(EH) > \pr(E)\pr(H) \]
+
+  Il verificarsi di $H$ aumenta la valutazione della probabilità di $E$.
+\end{definition}
+
+\begin{definition}[Eventi correlati negativamente]
+  \label{def:eventi_correlati_negativamente}
+  Un evento $E$ si dice correlato negativamente con $H$ se
+  \[ \pr(E|H) < \pr(E) \]
+  oppure, se \( \pr(H) > 0 \) e \( \pr(E) > 0 \)
+  \[ \pr(EH) < \pr(E)\pr(H) \]
+
+  Il verificarsi di $H$ diminuisce la valutazione della probabilità di $E$.
+\end{definition}
+
+\begin{definition}[Eventi non correlati]
+  \label{def:eventi_non_correlati}
+  Un evento $E$ si dice non correlato con $H$ se
+  \[ \pr(E|H) = \pr(E) \]
+
+  Il verificarsi di $H$ non cambia la valutazione della probabilità di $E$ e viceversa.
+\end{definition}
+
+Se $E$ è correlato positivamente con $H$, si ha che \( \tilde{E} \) è correlato negativamente e viceversa. % TODO dimostrazione
+
+\subsection{Indipendenza stocastica}
+Se due eventi non sono correlati\footnote{vedi definizione \ref{def:eventi_non_correlati}} sono \emph{stocasticamente indipendenti}, mentre il contrario non è sempre vero.
+\marginnote{Stocastico viene dal greco stochastikós ``congetturale'', e significa ``relativo al calcolo delle probabilità''.
+Talvolta l'indipendenza stocastica viene chiamata indipendenza statistica.}
+Generalizzando possiamo dire che:
+\begin{definition}[Indipendenza stocastica]
+  $n$ eventi \( E_1, \ldots, E_n \) sono stocasticamente indipendenti se:
+  \[ \pr(E_1 \cdots E_n) = \pr(E_1) \cdots \pr(E_n) \]
+\end{definition}
+
+La definizione è analoga per gli eventi subordinati:
+\begin{definition}[Indipendenza stocastica per eventi subordinati]
+  Sia \( \mathcal{H} = \{ H_1, \ldots, H_n \} \) una partizione; due eventi \( E_1, E_2 \) sono stocasticamente indipendenti subordinatamente alla partizione \( \mathcal{H} \) se \( \forall i \in \{1,\ldots,n\} \):
+  \[ \pr(E_1 E_2 | H_i) = \pr(E_1 | H_i)\pr(E_2|H_i) \]
+\end{definition}
+
+\begin{definition}[Indipendenza stocastica attraverso i costituenti]
+  $n$ eventi \( E_1, \ldots, E_n \) sono stocasticamente indipendenti se e solo se per ogni costituente:
+  \( Q = E_1^* \cdots E_n^* \) di \( E_1, \ldots, E_n \) vale che:
+  \[ \pr(Q) = \pr(E_1^*) \cdots \pr(E_n^*) \]
+\end{definition}
+
+\section{Varianza e covarianza}
+\subsection{Covarianza}
+\begin{definition}[Covarianza]\label{def:covarianza}
+  Dati due numeri aleatori $X$ ed $Y$, si definisce covarianza di $X$ ed $Y$:
+  \begin{align*}
+    \cov(X,Y) &= \pr((X - \pr(X))(Y - \pr(Y))) \\
+    &= \pr(XY - \pr(X)Y - \pr(Y)X + \pr(X)\pr(Y)) \\
+    &= \pr(XY) - \pr(X)\pr(Y)
+  \end{align*}
+\end{definition}
+
+\begin{proposition}[Correlazione tra numeri aleatori tramite covarianza]
+  Dalle definizioni di eventi correlati e della covarianza abbiamo che due numeri aleatori $X$ e $Y$ si dicono:
+  \begin{itemize}
+  \item \emph{correlati positivamente}\footnote{vedi definizione \ref{def:eventi_correlati_positivamente}} se \( \cov(X,Y) > 0 \)
+  \item \emph{correlati negativamente}\footnote{vedi definizione \ref{def:eventi_correlati_negativamente}} se \( \cov(X,Y) < 0 \)
+  \item \emph{non correlati}\footnote{vedi definizione \ref{def:eventi_non_correlati}} se \( \cov(X,Y) = 0 \)
+  \end{itemize}
+\end{proposition}
+
+
+\subsection{Varianza}
+\begin{definition}[Varianza]\label{def:varianza}
+  \begin{align*}
+    \var(X) &= \cov(X,X) \\
+    &= \pr(X^2) - \pr(X)^2 \\
+    &= \pr((X - \pr(X)^2)
+  \end{align*}
+\end{definition}
+\marginnote{Da notare che la varianza è una quantità sempre positiva}
+Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella previsione \( \pr(X) \), ovvero \( X \equiv \pr(X) \).
+
+\newthought{Data la varianza} si ottengono:
+\begin{definition}[Scarto quadratico medio]\label{def:scarto_quadratico_medio}
+  \[ \sqm(X) = \sqrt{\var(X)} \]
+\end{definition}
+
+\begin{definition}[Previsione quadratica]\label{def:previsione_quadratica}
+  \[ P_Q(X) = \sqrt{\pr(X^2)} \]
+\end{definition}
+
+
+\subsection{Proprietà}
+\begin{proposition}[Bilinearità della covarianza]\label{def:bilinearita_della_covarianza}
+  \[ \cov(X+Y,Z) = \cov(X,Z) + \cov(Y,Z) \]
+\end{proposition}
+
+\begin{proof}
+  Utilizzando la definizione di covarianza\footnote{vedi definizione \ref{def:covarianza}} e la linearità della previsione\footnote{vedi proposizione \ref{pro:linearita_previsione}}:
+  \begin{align*}
+    \cov(X + Y,Z) &= \pr((X+Y)Z) - \pr(X+Y)\pr(Z) \\
+    &= \pr(XZ + YZ) - (\pr(X)+\pr(Y))\pr(Z) \\
+    &= \pr(XZ) + \pr(YZ) - \pr(X)\pr(Z) - \pr(Y)\pr(Z) \\
+    &= \pr(XZ) - \pr(X)\pr(Z) + \pr(YZ) - \pr(Y)\pr(Z) \\
+    &= \cov(X,Y) + \cov(Y,Z)
+  \end{align*}
+\end{proof}
+
+\begin{proposition}[Trasformazione lineare della covarianza]
+  \label{pro:trasformazione_lineare_covarianza}
+  \[ \cov(aX + b, cY + d) = ac ~ \cov(X,Y) \]
+\end{proposition}
+
+\begin{proof}
+  Utilizzando la definizione di covarianza\footnote{vedi definizione \ref{def:covarianza}} e la linearità della previsione\footnote{vedi proposizione \ref{pro:linearita_previsione}}:
+  \begin{align*}
+    \cov(aX + b, cY + d) &= \pr(((aX + b) - \pr(aX + b))((cX + d) - \pr(cY + d))) \\
+    &= \pr((aX + b - a\pr(X) - b)(cX + d - c\pr(Y) - d)) \\
+    &= \pr((aX - a\pr(X))(cY - c\pr(Y))) \\
+    &= \pr(a(X - \pr(X)) c(Y - \pr(Y))) \\
+    &= ac ~ \cov(X,Y)
+  \end{align*}
+\end{proof}
+
+\begin{proposition}[Trasformazione lineare della varianza]
+  \label{pro:trasformazione_lineare_varianza}
+  \[ \var(aX + b) = a^2 \var(X) \]
+\end{proposition}
+
+\begin{proof}
+  La proprietà della varianza segue dalla trasformazione lineare della covarianza\footnote{vedi proposizione \ref{pro:trasformazione_lineare_covarianza}} sostituendo \( (cY + d) \) con \( (aX + b) \).
+\end{proof}  
+
+\section{Regressione Lineare} % TODO organizzare
+\begin{definition}[Regressione lineare]
+  Date due variabili aleatorie $X$ ed $Y$ la regressione lineare ci permette di calcolare la migliore approssimazione lineare del legame tra di esse.
+  L'approssimazione lineare è tanto buona quanto la seguente quantità è piccola:
+  \[ \pr((Y - aX - b)^2) \]
+  dove \( Y = aX + b \). % TODO e allora a che serve?
+
+  Per fare in modo che quella quantità sia più piccola possibile bisogna trovare la coppia \( (a,b) \in \mathbb{R}^2 \) che minimizza il risultato, ovvero:
+  \begin{gather*}
+    a = \frac{\cov(X,Y)}{\var(X)} \\
+    b = 0
+  \end{gather*}
+\end{definition}
+
+\begin{proof}
+  Supponendo che \( \pr(X) = \pr(Y) = 0 \),
+  \begin{align*}
+    \pr((Y - aX - b)^2) &= \pr(Y^2 + a^2 X^2 + b^2 - 2aXY - 2bY + 2abX) \\
+    &= \pr(Y^2) + a^2\pr(X^2) - 2a\pr(XY) - 2b\pr(Y) + 2ab\pr(X)
+  \end{align*}
+  Dalla definizione di varianza\footnote{vedi definizione \ref{def:varianza}} e covarianza\footnote{vedi definizione \ref{def:covarianza}} e dalle ipotesi abbiamo che \( \pr(Y)^2 = \var(Y) \) e \( \cov(X,Y) = \pr(XY) \).
+  Dunque:
+  \[ = \var(Y) + a^2 \var(X) + b^2 -2a \cov(X,Y) \] % TODO questa è complessa, semplificare
+
+  Per minimizzare il risultato avremo sicuramente \( b = 0 \), dato che $b$ è soltanto una costante additiva, mentre per $a$ dobbiamo trovare i punti dove la derivata è nulla:
+  \begin{gather*}
+    \frac{d}{da} \var(Y) + a^2 \var(X) + b^2 -2a \cov(X,Y) = 2a\var(X) - 2 \cov(X,Y) \\
+    \Rightarrow 2a\var(X) - 2 \cov(X,Y) = 0\\
+    \Rightarrow a = \frac{\cov(X,Y)}{\var(X)}
+  \end{gather*}
+
+\end{proof}
+
+\section{Disuguaglianze di Čebyšëv} % TODO organizzare
+\begin{definition}[Prima disuguaglianza di Čebyšëv]\label{def:chebyshev1}
+  Sia $X$ un numero aleatorio tale che \( P_Q(X) > 0 \), allora per ogni \( t > 0 \) vale che
+  \[ \pr(|X| \ge t P_Q(X)) \le \frac{1}{t^2} \]
+\end{definition}
+
+\begin{proof}
+  Sia l'evento \( E = (|X| \ge t P_Q(X)) \). Calcoliamo \( \pr(X^2) \) con il teorema delle probabilità totali\footnote{vedi teorema \ref{thm:probabilita_totale}}:
+  \[ \pr(X^2) = \pr(X^2|E)\pr(E) + \pr(X^2|\tilde{E})\pr(\tilde{E}) \] % TODO manca qualcosa...
+  Per la monotonia della previsione\footnote{vedi proposizione \ref{pro:monotonia_previsione}} si ha che \( \pr(X^2|\tilde{E}) \ge 0 \) in quanto \( X^2 \) è un numero aleatorio sempre positivo.
+  Ne segue che:
+  \[ \pr(X^2) \ge \pr(X^2|E)\pr(E) \]
+  Quando si verifica  \( E \Rightarrow X^2 \ge (t P_Q(X))^2 \):
+  \[ \pr(X^2) \ge t^2 P_Q(X)^2 \pr(E) \]
+  Poiché\footnote{vedi definizione \ref{def:previsione_quadratica}} \( P_Q(X)^2 = \pr(X^2) \) si ottiene:
+  \[ \pr(E) \le \frac{1}{t^2} \equiv \pr(|X| \ge t P_Q(X)) \le \frac{1}{t^2} \]
+\end{proof}
+
+\begin{definition}[Seconda disuguaglianza di Čebyšëv]\label{def:chebyshev2}
+  Sia un numero aleatorio $X$ con \( \var(X) > 0 \). Posto \( m = \pr(X) \), \( \forall t > 0 \) si ha che:
+  \[
+  \pr(|X - m) \ge \sqm(X)t) \le \frac{1}{t^2}
+  \]
+\end{definition}
+
+\begin{proof}
+  Segue dalla prima disuguaglianza di Čebyšëv\footnote{vedi definizione \ref{def:chebyshev1}}, sostituendo ad $X$ il numero aleatorio \( Y = X - m \).
+\end{proof}
+
+\section{Legge debole dei grandi numeri}
+La legge debole dei grandi numeri\footnote{nota anche come teorema di Bernoulli} fornisce una formalizzazione del fatto che la frequenza di un evento in un grande numero di prove ripetute indipendenti è vicino alla sua probabilità.
+
+\begin{theorem}[Legge debole dei grandi numeri]\label{thm:teorema_bernoulli}
+  Sia \( X_1,X_2, \ldots \) una successione di numeri aleatori a due a due non correlati, ovvero con \( \cov(X_i, X_j) ~ i \ne j \), equamente distribuiti ed aventi la stessa previsione \( \pr(X_i) = m \) e varianza \( \var(X_i) = \var \).
+  % TODO varianza o sqm? ed è giusta quella eq? se si che senso ha?
+  Definiamo una nuova variabile:
+  \[ X \equiv \frac{X_1 + \ldots + X_n}{n} \]
+  Sarà:
+  \[ \forall \lambda > 0 ~~ \lim_{n \rightarrow \infty} \pr(|X - m| \ge \lambda) = 0 \]
+\end{theorem}
+
+\begin{proof}
+  Dato che \( n \rightarrow \infty \):
+  \begin{align*}
+    \pr(X) &= \pr \left( \frac{X_1 + \ldots + X_n}{n} \right) \\
+    &= \frac{1}{n} (\pr(X_1) + \ldots + \pr(X_n)) \\
+    &= \frac{n~m}{n}
+  \end{align*}
+  Inoltre,
+  \begin{align*}
+    \var(X) &= \var \left( \frac{X_1 + \ldots + X_n}{n} \right) \\
+    &= \var \left( \frac{X_1}{n} \right) + \ldots + \var \left( \frac{X_n}{n} \right) \\
+    &= \frac{\var}{n^2} + \ldots + \frac{\var}{n^2} \\
+    &= \frac{\var}{n}
+  \end{align*}
+  Dunque, per la disuguaglianza di Čebyšëv\footnote{vedi definizione \ref{def:chebyshev1}}, per ogni \( \lambda > 0 \),
+  \[ \pr(|X - m| \ge \lambda) \le \frac{\var(X)}{\lambda^2} = \frac{\var}{n \lambda^2} \]
+  Siccome \( n \rightarrow \infty \), segue che
+  \[ \lim_{n \rightarrow \infty} \pr(|X - m| \ge \lambda) = 0 \]
+\end{proof}
+
+\section{Coefficiente di correlazione}
+Il coefficiente di correlazione è la misura di quanto siano vicini i dati alla curva di approssimazione.
+
+\begin{definition}[Coefficiente di correlazione]
+  Dati due numeri aleatori $X$ ed $Y$, si definisce coefficiente di correlazione di $X,Y$
+  \[ \cc(X,Y) = \frac{\cov(X,Y)}{\sqm(X)\sqm(Y)} \]
+\end{definition}
+
+\begin{proposition}[Trasformazione lineare del coefficiente di correlazione]
+  \[ \cc(aX + b, cY + d) = \sgn(ac) \cc(X,Y) \]
+\end{proposition}
+
+\begin{proof}
+  Utilizzando le proprietà della covarianza\footnote{vedi proposizione \ref{pro:trasformazione_lineare_covarianza}} e la definizione della funzione segno
+  \footnote{\( \sgn(x) = \frac{x}{|x|} \mbox{~con~} x \ne 0 \)}:
+  \begin{align*}
+    \cc(aX + b, cY + d) &= \frac{\cov(aX + b, cY + d)}{\sqrt{\var(aX + b) \var(cY + d)}} \\
+    &= \frac{ac ~ \cov(X,Y)}{|ac| \sqrt{\var(X) \var(Y)}} \\
+    &= \sgn(ac) \cc(X,Y)
+  \end{align*}
+\end{proof}
+
+\begin{definition}[Numero aleatorio standardizzato]
+  \[ X^* = \frac{X - \pr(X)}{\sqm(X)} \]
+\end{definition}
+I numeri aleatori standardizzati hanno due caratteristiche interessanti: \( \pr(X^*) = \pr(Y^*) = 0 \) e \( \var(X^*) = \var(Y^*) = 1 \)
+
+\begin{proposition}[Monotonia del coefficiente di correlazione]
+  \[ -1 \le \cc(X,Y) \le 1 \]
+\end{proposition}
+
+\begin{proof}
+  Dati due numeri aleatori standardizzati $X^*$ ed $Y^*$ si ha che:
+  \begin{align*}
+    \cov(X^*, Y^*) &= \pr(X^* Y^*) \\ % TODO espandere questo passaggio
+    &= \frac{\pr((X - \pr(X))(Y - \pr(Y)))}{\sqm(X)\sqm(Y)} \\
+    &= \cc(X,Y)
+  \end{align*}
+  Calcolando la varianza di $X^*$ ed $Y^*$ si ottiene:
+  \begin{align*}
+    \var(X^* + Y^*) &= \var(X^*) + \var(Y^*) + 2 \cov(X^*, Y^*) \\
+    &= 1 + 1 + 2 \cov(X^*, Y^*) \\
+    &= 2 + 2\cc(X,Y) \ge 0
+  \end{align*}
+  in quanto la varianza di un numero aleatorio è una quantità sempre positiva. Analogamente dalla varianza di \( X^* - Y^* \) segue che:
+  \[ \var(X^* - Y^*) = 2 - 2\cc(X,Y) \ge 0 \]
+
+  Quindi vale che:
+  \[ -1 \le \cc(X,Y) \le 1 \]
+\end{proof}
