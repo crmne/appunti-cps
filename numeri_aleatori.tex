@@ -482,28 +482,6 @@ La definizione è analoga per gli eventi subordinati:
   \end{itemize}
 \end{proposition}
 
-\subsection{Varianza}
-\begin{definition}[Varianza]\label{def:varianza}
-  \begin{align*}
-    \var(X) &= \cov(X,X) \\
-    &= \pr(X^2) - \pr(X)^2 \\
-    &= \pr((X - \pr(X)^2)
-  \end{align*}
-\end{definition}
-\marginnote{Da notare che la varianza è una quantità sempre positiva}
-Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella previsione \( \pr(X) \), ovvero \( X \equiv \pr(X) \).
-
-\newthought{Data la varianza} si ottengono:
-\begin{definition}[Scarto quadratico medio]\label{def:scarto_quadratico_medio}
-  \[ \sqm(X) = \sqrt{\var(X)} \]
-\end{definition}
-
-\begin{definition}[Previsione quadratica]\label{def:previsione_quadratica}
-  \[ P_Q(X) = \sqrt{\pr(X^2)} \]
-\end{definition}
-
-
-\subsection{Proprietà}
 \begin{proposition}[Bilinearità della covarianza]\label{def:bilinearita_della_covarianza}
   \[ \cov(X+Y,Z) = \cov(X,Z) + \cov(Y,Z) \]
 \end{proposition}
@@ -534,6 +512,26 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
     &= ac ~ \cov(X,Y)
   \end{align*}
 \end{proof}
+
+\subsection{Varianza}
+\begin{definition}[Varianza]\label{def:varianza}
+  \begin{align*}
+    \var(X) &= \cov(X,X) \\
+    &= \pr(X^2) - \pr(X)^2 \\
+    &= \pr((X - \pr(X)^2)
+  \end{align*}
+\end{definition}
+\marginnote{Da notare che la varianza è una quantità sempre positiva}
+Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella previsione \( \pr(X) \), ovvero \( X \equiv \pr(X) \).
+
+\newthought{Data la varianza} si ottengono:
+\begin{definition}[Scarto quadratico medio]\label{def:scarto_quadratico_medio}
+  \[ \sqm(X) = \sqrt{\var(X)} \]
+\end{definition}
+
+\begin{definition}[Previsione quadratica]\label{def:previsione_quadratica}
+  \[ P_Q(X) = \sqrt{\pr(X^2)} \]
+\end{definition}
 
 \begin{proposition}[Trasformazione lineare della varianza]
   \label{pro:trasformazione_lineare_varianza}
