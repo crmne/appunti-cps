@@ -94,22 +94,35 @@ Per dichiarare un evento si usa la seguente sintassi:
 \[ E = (\text{condizione}) \]
 che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E = 0 \).
 
+\begin{definition}[Asserzione]\label{def:asserzione}
+  Se $E$ è una proposizione o un evento allora, usando il simbolo $\vdash$ come prefisso, \( \vdash E \) diventa l'asserzione che ``$E$ è certo''. 
+\end{definition}
+
+\begin{definition}[Implicazione]\label{def:implicazione}
+  Un evento $A$ implica un evento $B$ quando $A$ non si può verificare se non si verifica anche $B$, o che \( A\tilde{B} \) è impossibile.
+
+  Denotiamo dunque che $A$ implica $B$ con \( A \subseteq B \), che $A$ è identico a $B$ con \( A \equiv B \) e che $A$ implica strettamente $B$ con \( A \subset B \).
+\end{definition}
+
 \begin{definition}[Proprietà degli eventi]
   Per \( E_1, \ldots, E_n \) eventi
 
   Incompatibilità: \( \vdash E_1  \cdots E_n = 0 \)
-  \marginnote{Il simbolo $\vdash$ indica che la proposizione seguente è sicuramente vera}
 
   Esaustività: \( \vdash E_1 + \ldots + E_n \geq 1 \)
 
-  Partizione\footnote{anche detti eventi mutuamente esclusivi}: \( \vdash E_1 + \ldots + E_n = 1 \)
+  Partizione
+  \footnote{ovvero incompatibili ed esaustivi. Anche detti eventi mutuamente esclusivi.}:
+  \( \vdash E_1 + \ldots + E_n = 1 \)
 \end{definition}
 
 \begin{proposition}[Operazioni su eventi]{\ \\}
   Somma logica:
+  \marginnote{La somma logica di eventi può essere vista come un OR booleano.}
   \[ E \vee F = E + F - EF \]
 
   Prodotto logico:
+  \marginnote{Analogamente il prodotto logico può essere visto come un AND booleano.}
   \[ E \wedge F = EF \]
 \end{proposition}
 \begin{proof}
