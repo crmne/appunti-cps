@@ -1,0 +1,46 @@
+Questa è una raccolta di appunti di Calcolo delle Probabilità e Statistica.
+
+Contribuire
+-----------
+
+Se qualcosa non vi soddisfa, e avete idea di cosa, potete cambiarla!
+
+Basta [forkare questo progetto][fork], modificare il vostro fork e mandarmi una pull request.
+
+O, se vi piacciono fare le cose alla vecchia maniera, mandarmi le patch via mail.
+
+Ottenere il PDF
+---------------
+
+Ogni tanto compilerò una versione in PDF, che potete trovare nella sezione [Downloads][].
+
+Se invece volete l'ultima versione disponibile, potete:
+
+Compilare il PDF
+----------------
+
+Per la prima volta:
+
+    git clone git://github.com/earcar/appunti-cps
+    cd appunti-cps
+    rake
+
+Le volte successive basterà:
+
+    cd appunti-cps
+    git pull
+    rake clean && rake
+
+Naturalmente vi serviranno [git][], [ruby][] e una distribuzione TeX recente, come [TeX Live][] o [MacTeX][].
+
+Licenza
+-------
+
+This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 2.5 Italy License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/2.5/it/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+[Downloads]: http://github.com/earcar/appunti-cps/downloads
+[fork]: http://help.github.com/forking/
+[TeX Live]: http://www.tug.org/texlive/
+[MacTeX]: http://www.tug.org/mactex
+[git]: http://help.github.com/git-installation-redirect
+[ruby]: http://www.ruby-lang.org/it/
