@@ -25,7 +25,7 @@ L'analisi degli eventi disciplinati dalla probabilità si chiama statistica.
   Un numero ben determinato ma non noto per mancanza di informazioni.
 \end{definition}
 È pratica comune denotare i numeri aleatori con le lettere maiuscole (più comunemente $X$).
-L'\emph{insieme dei valori possibili} che $X$ può assumere viene denotato con $I(X)$.
+L'\emph{insieme dei valori possibili}\footnote{detto anche spazio campionario} che $X$ può assumere viene denotato con $I(X)$.
 
 Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conosciute dove $I(X)$ contiene un solo elemento.
 
@@ -101,19 +101,7 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
 \begin{definition}[Implicazione]\label{def:implicazione}
   Un evento $A$ implica un evento $B$ quando $A$ non si può verificare se non si verifica anche $B$, o che \( A\tilde{B} \) è impossibile.
 
-  Denotiamo dunque che $A$ implica $B$ con \( A \subseteq B \), che $A$ è identico a $B$ con \( A \equiv B \) e che $A$ implica strettamente $B$ con \( A \subset B \).
-\end{definition}
-
-\begin{definition}[Proprietà degli eventi]
-  Per \( E_1, \ldots, E_n \) eventi
-
-  Incompatibilità: \( \vdash E_1  \cdots E_n = 0 \)
-
-  Esaustività: \( \vdash E_1 + \ldots + E_n \geq 1 \)
-
-  Partizione
-  \footnote{ovvero incompatibili ed esaustivi. Anche detti eventi mutuamente esclusivi.}:
-  \( \vdash E_1 + \ldots + E_n = 1 \)
+  Denotiamo dunque ``$A$ implica $B$'' con \( A \subseteq B \), che ``$A$ è identico a $B$'' con \( A \equiv B \) e che ``$A$ implica strettamente $B$'' con \( A \subset B \).
 \end{definition}
 
 \begin{proposition}[Operazioni su eventi]{\ \\}
@@ -150,9 +138,29 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
   \end{equation*}
 \end{proof}
 
+\begin{definition}[Proprietà degli eventi]
+  Per \( E_1, \ldots, E_n \) eventi
+
+  Incompatibilità:
+  \( \vdash E \cdot F = 0 \)
+
+  Mutua esclusione
+  \footnote{ovvero incompatibilità a coppie}:
+  \( \forall i, j \text{ con } i \neq j ~ \vdash E_i \cdot E_j = 0 \)
+
+  Esaustività: \( \vdash E_1 + \ldots + E_n \geq 1 \)
+
+  Partizione
+  \footnote{ovvero mutuamente esclusivi ed esaustivi}:
+  \( \vdash E_1 + \ldots + E_n = 1 \)
+\end{definition}
+
 \subsection{Costituenti}
+\marginnote{Intuitivamente un costituente è uno dei \emph{possibili} modi di comporre gli eventi \( E_1, \ldots, E_n \).}
 \begin{definition}[Costituente]
-  Si definisce costituente di \( E_1, \ldots, E_n \) l'evento \( Q = E_1^*, \ldots, E_n^* \) dove
+  Si definisce costituente degli eventi \( E_1, \ldots, E_n \) l'evento
+  \[ C = E_1^* \cdots E_n^* \]
+  dove
   \begin{equation*}
     E_i^* =
     \begin{cases}
@@ -160,19 +168,21 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
       \tilde{E_i}
     \end{cases}
   \end{equation*}
+  Non tutti i costituenti sono possibili, tranne nel caso in cui gli $E_i$ sono logicamente indipendenti.
 \end{definition}
 
-Sono possibili tutti i costituenti solo se gli $E_i$ sono logicamente indipendenti.
+Il numero dei costituenti possibili è sempre \( \leq 2^n \), eguaglia \( 2^n \) solo nel caso un cui gli $E_i$ sono logicamente indipendenti.
 
-Il numero dei costituenti possibili è sempre \( \leq 2^n \), eguaglia \( 2^n \) solo nel caso un cui siano tutti logicamente indipendenti.
+I costituenti possibili costituiscono una partizione:
+\[ \sum C = (E_1 + \tilde{E_1}) \cdots (E_n + \tilde{E_n}) = 1\]
 
 \begin{definition}[Tipologie di costituenti]
   I costituenti, rispetto ad un evento $E$, possono essere di:
   \begin{itemize}
-  \item \emph{I tipo} quando \( Q \subset E \)
+  \item \emph{I tipo} quando \( C \subset E \)
     \marginnote{$E$ si verifica}
 
-  \item \emph{II tipo} quando \( Q \subset \tilde{E} \)
+  \item \emph{II tipo} quando \( C \subset \tilde{E} \)
     \marginnote{$E$ non si verifica}
 
   \item \emph{III tipo} altrimenti
@@ -190,7 +200,7 @@ Il numero dei costituenti possibili è sempre \( \leq 2^n \), eguaglia \( 2^n \)
 \end{definition}
 
 Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
-\[ E = \sum_{Q \subset E} Q \]
+\[ E = \sum_{C \subset E} C \]
 
 \section{Previsione e probabilità}
 \subsection{Previsione}
