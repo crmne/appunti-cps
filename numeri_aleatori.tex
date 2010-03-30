@@ -220,13 +220,13 @@ Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i 
 \end{definition}
 
 \begin{example}[Scommessa]
-  In una scommessa siamo chiamati a scegliere un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno (aleatorio) proporzionale a \( X -\bar{x} \):
-    \[ \lambda(X-\bar{x}) \]
+  In una scommessa siamo chiamati a scegliere un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno aleatorio
+    \[ G = \lambda(X-\bar{x}) \]
   dove \( \lambda \) è un coefficiente di proporzionalità scelto da chi propone la scommessa.
   Dunque la scelta di $\bar{x}$, per il criterio di coerenza, non deve portare a perdite certe.
 \end{example}
 
-\newthought{Le seguenti proprietà} seguono dal criterio di coerenza:
+\newthought{Proprietà}
 
 \begin{proposition}[Monotonia della previsione]\label{pro:monotonia_previsione}
   \[ \inf I(X) \leq \pr(X) \leq \sup I(X) \]
@@ -246,7 +246,8 @@ Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i 
 \end{proof}
 
 \begin{proposition}[Linearità della previsione]\label{pro:linearita_previsione}
-  \[ X = \alpha_1 X_1 + \ldots + \alpha_n X_n \Rightarrow \alpha_1 \pr(X_1) + \ldots + \alpha_n \pr(X_n) \]
+  Con \( X = a_1 X_1 + \ldots + a_n X_n \) abbiamo che:
+  \[ \pr(X) = a_1 \pr(X_1) + \ldots + a_n \pr(X_n) \]
 \end{proposition}
 
 \begin{proof}
@@ -270,7 +271,8 @@ Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i 
     \Rightarrow ~ & \pr(Z) = \pr(X) + \pr(Y)
   \end{align*}
 
-  Ricapitolando: \( Z = X + Y \Rightarrow \pr(Z) = \pr(X) + \pr(Y) \).
+  Generalizzando:
+  \[ \pr(a_1 X_1 + \ldots + a_n X_n) = a_1 \pr(X_1) + \ldots + a_n \pr(X_n) \]
 \end{proof}
 
 Per i numeri aleatori illimitati\footnote{quelli per cui \( \inf I(X) \), \( \sup I(X) \) o entrambi non esistono finiti} può non esistere nessun valore finito corrispondente alla nostra valutazione di \( \pr(X) \).
