@@ -144,11 +144,12 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
   Incompatibilità:
   \( \vdash E \cdot F = 0 \)
 
-  Mutua esclusione
-  \footnote{ovvero incompatibilità a coppie}:
+  Mutua esclusione:
   \( \forall i, j \text{ con } i \neq j ~ \vdash E_i \cdot E_j = 0 \)
+  \marginnote{e dunque \( \vdash E_1 + \ldots + E_n \leq 1 \)}
 
-  Esaustività: \( \vdash E_1 + \ldots + E_n \geq 1 \)
+  Esaustività:
+  \( \vdash E_1 + \ldots + E_n \geq 1 \)
 
   Partizione
   \footnote{ovvero mutuamente esclusivi ed esaustivi}:
@@ -156,7 +157,7 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
 \end{definition}
 
 \subsection{Costituenti}
-\marginnote{Intuitivamente un costituente è uno dei \emph{possibili} modi di comporre gli eventi \( E_1, \ldots, E_n \).}
+\marginnote{Intuitivamente un costituente è uno dei possibili modi di comporre gli eventi \( E_1, \ldots, E_n \).}
 \begin{definition}[Costituente]
   Si definisce costituente degli eventi \( E_1, \ldots, E_n \) l'evento
   \[ C = E_1^* \cdots E_n^* \]
@@ -174,59 +175,58 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
 Il numero dei costituenti possibili è sempre \( \leq 2^n \), eguaglia \( 2^n \) solo nel caso un cui gli $E_i$ sono logicamente indipendenti.
 
 I costituenti possibili costituiscono una partizione:
-\[ \sum C = (E_1 + \tilde{E_1}) \cdots (E_n + \tilde{E_n}) = 1\]
+\[ \sum_{C ~ \text{costituente}} C = (E_1 + \tilde{E_1}) \cdots (E_n + \tilde{E_n}) = 1\]
 
 \begin{definition}[Tipologie di costituenti]
-  I costituenti, rispetto ad un evento $E$, possono essere di:
+  Un costituente, rispetto ad un evento $E$, può essere di:
   \begin{itemize}
-  \item \emph{I tipo} quando \( C \subset E \)
-    \marginnote{$E$ si verifica}
-
-  \item \emph{II tipo} quando \( C \subset \tilde{E} \)
-    \marginnote{$E$ non si verifica}
-
+  \item \emph{I tipo} quando si verifica se $E$ si verifica: \( C \subset E \)
+  \item \emph{II tipo} quando si verifica se $E$ non si verifica: \( C \subset \tilde{E} \)
   \item \emph{III tipo} altrimenti
-    \marginnote{non lo sappiamo}
   \end{itemize}
 \end{definition}
 
-\begin{definition}[Indipendenza logica tramite costituenti]
-  Si dice che l'evento $E$ è:
+\begin{definition}[Dipendenza logica tramite costituenti]
+  Un particolare evento $E$ si dice:
   \begin{itemize}
-  \item \emph{logicamente dipendente} da \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del I o del II tipo
-  \item \emph{logicamente indipendente} da \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del III tipo
-  \item \emph{logicamente semidipendente} da \( E_1, \ldots, E_n \) altrimenti
+  \item \emph{logicamente dipendente}
+  \footnote{è sempre possibile determinarlo, dati i risultati degli eventi \( E_1, \ldots, E_n \)}
+  dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del I o del II tipo
+  \item \emph{logicamente indipendente}
+  \footnote{il risultato di $E$ rimane incerto (possibile) anche quando il risultato di tutti gli altri, qualsiasi esso sia, è noto}
+  dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del III tipo
+  \item \emph{logicamente semidipendente}
+  \footnote{il risultato di $E$ \emph{potrebbe} dipendere dai risultati degli altri eventi}
+  dagli eventi \( E_1, \ldots, E_n \) altrimenti
   \end{itemize}
 \end{definition}
 
 Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
 \[ E = \sum_{C \subset E} C \]
 
-\section{Previsione e probabilità}
+\section{Previsione e Probabilità}
 \subsection{Previsione}
+\marginnote{La previsione non tenta di indovinare il risultato, ma trasforma, molto ottimisticamente, un'incertezza in una certezza ben definita, ma di nessun valore oggettivo.}
 \begin{definition}[Previsione]
-  Esprime l'equivalente certo del fenomeno casuale rappresentato da un numero aleatorio $X$, e si denota con $\pr(X)$. La previsione
-  \footnote{detta anche media, attesa o speranza.
-    Nel caso che $X$ sia un evento viene chiamata probabilità, vedi definizione \ref{def:probabilita}.}
-  non è oggettiva ma dipende dal nostro stato di informazione e dalla nostra valutazione.
+  Esprime l'equivalente certo del fenomeno casuale rappresentato da un numero aleatorio $X$, e si denota con $\pr(X)$.
+
+  La previsione non è oggettiva ma dipende dal nostro stato di informazione e dalla nostra valutazione.
 \end{definition}
 
-Per quantificarla possiamo usare due metodi:
-\begin{enumerate}
-\item \emph{Metodo della scommessa}: scegliamo un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno aleatorio proporzionale a \( X -\bar{x} \):
-  \[ \lambda(X-\bar{x}) \]
-  dove \( \lambda \in \mathbb{R} \) è un coefficiente di proporzionalità.
-  La scelta di $\bar{x}$ non è completamente arbitraria, deve rispettare un \emph{principio di coerenza}:
-  la scelta va fatta in modo che non debba essere possibile una proposta che porti ad una perdita certa.
-  \footnote{la dimostrazione della proposizione \ref{pro:monotonia_previsione} contiene i casi in cui si hanno perdite certe.}
+Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i pro ed i contro secondo qualche criterio.
 
-  % TODO chiarificare o eliminare
-\item \emph{Metodo della penalità}: con \( \pr(X) = \bar{\bar{x}} \):
-  \[ - \lambda(X - \bar{\bar{x}})^2 \]
-  \emph{Principio di coerenza}: non deve esistere un valore $\bar{\bar{x}}$ tale che la corrispondente penalità sia sicuramente minore.
-\end{enumerate}
+\begin{definition}[Criterio di coerenza]\label{def:coerenza}
+  Ogni scelta va fatta in modo tale che le decisioni non portino a risultati non desiderati.
+\end{definition}
 
-\newthought{Le seguenti proprietà} seguono dal principio di coerenza:
+\begin{example}[Scommessa]
+  In una scommessa siamo chiamati a scegliere un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno (aleatorio) proporzionale a \( X -\bar{x} \):
+    \[ \lambda(X-\bar{x}) \]
+  dove \( \lambda \) è un coefficiente di proporzionalità scelto da chi propone la scommessa.
+  Dunque la scelta di $\bar{x}$, per il criterio di coerenza, non deve portare a perdite certe.
+\end{example}
+
+\newthought{Le seguenti proprietà} seguono dal criterio di coerenza:
 
 \begin{proposition}[Monotonia della previsione]\label{pro:monotonia_previsione}
   \[ \inf I(X) \leq \pr(X) \leq \sup I(X) \]
