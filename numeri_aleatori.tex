@@ -88,7 +88,7 @@ Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conos
 
 \section{Eventi}
 \begin{definition}[Evento]\label{def:evento}
-  Caso particolare di numero aleatorio, dove \( I(E) \subseteq {0,1} \).
+  Caso particolare di numero aleatorio, dove \( I(E) \subseteq \{0,1\} \).
 \end{definition}
 Per dichiarare un evento si usa la seguente sintassi:
 \[ E = (\text{condizione}) \]
@@ -215,25 +215,41 @@ Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
 
 Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i pro ed i contro secondo qualche criterio.
 
-\begin{definition}[Criterio di coerenza]\label{def:coerenza}
+\begin{definition}[Coerenza]\label{def:coerenza}
   Ogni scelta va fatta in modo tale che le decisioni non portino a risultati non desiderati.
 \end{definition}
 
-\begin{example}[Scommessa]
-  In una scommessa siamo chiamati a scegliere un certo valore \( \pr(X) = \bar{x} \) che ci dà un guadagno aleatorio
-    \[ G = \lambda(X-\bar{x}) \]
-  dove \( \lambda \) è un coefficiente di proporzionalità scelto da chi propone la scommessa.
-  Dunque la scelta di $\bar{x}$, per il criterio di coerenza, non deve portare a perdite certe.
-\end{example}
+Tramite la coerenza, possiamo dunque definire in modo operazionale la previsione:
 
-\newthought{Proprietà}
+\begin{definition}[Primo criterio di coerenza]\label{def:criterio_coerenza_1_previsione}
+  Dato un numero aleatorio $X$ siamo obbligati a scegliere un certo valore \( \pr(X) = \bar{x} \), in modo tale che riusciamo ad accettare qualsiasi scommessa con guadagno
+    \[ G = \lambda(X-\bar{x}) \]
+  dove \( \lambda \in \mathbb{R} \) è scelto dall'avversario.
+
+  Dunque la scelta di $\bar{x}$ per essere coerente non deve portare a perdite certe. In tal caso \( \pr(X) \) è la previsione di $X$.
+\end{definition}
+
+\begin{definition}[Secondo criterio di coerenza]
+  Dato un numero aleatorio $X$ soffriamo di una penalità
+  \[ P = \left(\frac{X-\bar{x}}{\lambda}\right)^2 \]
+  \marginnote{Questa è la definizione secondo De Finetti.
+  Un'altra definizione potrebbe essere
+  \[ P = - \lambda (X - \bar{x})^2 \]}
+  nella quale possiamo scegliere il valore \( \pr(X) = \bar{x} \) e \( \lambda \in \mathbb{R} \) è fissato.
+
+  Dunque la scelta di $\bar{x}$ per essere coerente deve portare alla penalità minore. In tal caso \( \pr(X) \) è la previsione di $X$.
+\end{definition}
+
+\newthought{Le seguenti proprietà} seguono dai criteri di coerenza:
 
 \begin{proposition}[Monotonia della previsione]\label{pro:monotonia_previsione}
   \[ \inf I(X) \leq \pr(X) \leq \sup I(X) \]
 \end{proposition}
 
 \begin{proof}
-  Supponendo che \( \bar{x} < \inf I(X) \), allora per \( \lambda < 0 \):
+  Per il primo criterio di coerenza
+  \footnote{vedi definizione \ref{def:criterio_coerenza_1}}
+  supponendo che \( \bar{x} < \inf I(X) \), allora per \( \lambda < 0 \):
   \[ \vdash \lambda(X - \bar{x}) < 0 \]
   Perché $\lambda$ è una quantità negativa, e \( (X - \bar{x}) \) positiva.
 
@@ -251,7 +267,10 @@ Non essendo oggettiva dobbiamo valutare e ragionare su ogni scelta e valutare i 
 \end{proposition}
 
 \begin{proof}
-  Consideriamo il numero aleatorio \( Z = X + Y \) e posti \( \bar{z} = \pr(Z) \), \( \bar{x} = \pr(X) \) e \( \bar{y} = \pr(Y) \), sia \( G \) il guadagno
+  Consideriamo il numero aleatorio \( Z = X + Y \) e posti \( \bar{z} = \pr(Z) \), \( \bar{x} = \pr(X) \) e \( \bar{y} = \pr(Y) \),
+  per il primo criterio di coerenza
+  \footnote{vedi definizione \ref{def:criterio_coerenza_1}}
+  sia \( G \) il guadagno
   \begin{align*}
     G &= c_1(X - \bar{x}) + c_2(Y - \bar{y}) + c_3(Z - \bar{z}) \\
     &= c_1(X - \bar{x}) + c_2(Y - \bar{y}) + c_3(X + Y - \bar{z}) \\
@@ -294,7 +313,7 @@ Per i numeri aleatori illimitati\footnote{quelli per cui \( \inf I(X) \), \( \su
   \end{align*}
 \end{proof}
 
-\subsection{Probabilità}
+\subsection{Probabilità di eventi}
 \begin{definition}[Probabilità]\label{def:probabilita}
   Dato un evento \( E \), \( \pr(E) \) si chiama anche probabilità di \( E \).
 \end{definition}
@@ -340,15 +359,18 @@ Dunque la probabilità che si verifichi un determinato evento di una partizione 
   La previsione subordinata\footnote{detta anche previsione condizionata} di un numero aleatorio $X$ rispetto ad un evento $E$, denotata con \( \pr(X|E) \), è la previsione di $X$ sapendo che $E$ si sia verificato.
 \end{definition}
 
-Tramite il \emph{metodo della scommessa} possiamo calcolare il guadagno:
-\[ G = \lambda E (X - \bar{x}) \]
-La definizione data è molto simile a quella della previsione, alla quale la moltiplicazione per l'evento $E$ dona le seguenti caratteristiche:
-\begin{itemize}
-\item Se $E$ si verifica allora anche $X$ può verificarsi, e il guadagno è lo stesso della previsione non subordinata.
-\item Se $E$ non si verifica la scommessa è annullata e \( G = 0 \).
-\end{itemize}
-
 Inoltre \( I(X|E) \subset I(X) \).
+
+\begin{definition}[Primo criterio di coerenza]\label{def:criterio_coerenza_1_probabilita}
+  È molto simile al criterio di coerenza della previsione
+  \footnote{vedi definizione \ref{def:criterio_coerenza_1_previsione}}:
+  \[ G = \lambda E (X - \bar{x}) \]
+  alla quale la moltiplicazione per l'evento $E$ dona le seguenti caratteristiche:
+  \begin{itemize}
+  \item Se $E$ si verifica allora anche $X$ può verificarsi, e il guadagno è lo stesso della previsione non subordinata.
+  \item Se $E$ non si verifica la scommessa è annullata e \( G = 0 \).
+  \end{itemize}
+\end{definition}
 
 \newthought{Valgono le stesse proprietà} della previsione:
 \begin{definition}[Monotonia]\label{pro:monotonia_previsione_subordinata}
@@ -360,12 +382,12 @@ Inoltre \( I(X|E) \subset I(X) \).
   \[ \pr(\alpha X|H) = \alpha \pr(X|H) \]
 \end{definition}
 
-che seguono allo stesso modo dal principio di coerenza.
+che seguono allo stesso modo dal criterio di coerenza.
 
 \subsection{Probabilità composta}
 \begin{theorem}[Probabilità composta]\label{thm:probabilita_composta}
   Dati due eventi $A$ e $B$, si ha che:
-  \marginnote{In alcuni testi la probabilità composta si denota con \( \pr(A\cap B) \)}
+  \marginnote{In alcuni testi la probabilità composta viene denotata con \( \pr(A\cap B) \).}
   \[ \pr(AB) = \pr(A)\pr(B|A) = \pr(B)\pr(A|B) \]
 \end{theorem}
 
