@@ -1,0 +1,22 @@
+%!TEX root = appunti.tex
+%!TEX encoding = UTF-8 Unicode
+\chapter{Distribuzioni discrete}
+\begin{definition}[Distribuzione discreta]\label{def:distribuzione_discreta}
+  Una distribuzione statistica le cui variabili possono avere solo valori discreti.
+
+  Dunque, un numero aleatorio $X$ si dice con distribuzione discreta se la cardinalità di $I(X)$ è finita o numerabile.
+\end{definition}
+\begin{definition}[Distribuzione di probabilità]\label{def:distribuzione_di_probabilita}
+  La funzione che descrive la probabilità che un certo valore si verifichi.
+  \marginnote{La distribuzione di probabilità viene anche detta ``funzione di densità di probabilità''.}
+
+  Se consideriamo $X$ una variabile aleatoria con distribuzione discreta, la sua distribuzione di probabilità sarà data da
+  \[ \pr(X = x_i) = p(x_i) \text{ con } x_i \in I(X) \]
+  dove
+  \[ \sum_{x_i \in I(X)} \pr(X = x_i) = 1 \]
+\end{definition}
+
+\begin{definition}[Schema di Bernoulli]\label{def:schema_bernoulli}
+  Una successione \( (E_i)_{i \in \mathbb{N}} \) di eventi stocasticamente indipendenti ed equiprobabili, ovvero tali per cui vale che
+  \[ \pr(E_i) = p, ~ \forall i \in \mathbb{N} \]
+\end{definition}
