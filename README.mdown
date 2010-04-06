@@ -31,7 +31,7 @@ Le volte successive basterà:
     git pull
     rake clean && rake
 
-Naturalmente vi serviranno [git][], [ruby][], [gnuplot][] compilato col supporto [pdf][] e una distribuzione TeX recente, come [TeX Live][] o [MacTeX][].
+Naturalmente vi serviranno [git][], [ruby][] e una distribuzione TeX recente, come [TeX Live][] o [MacTeX][].
 
 Licenza
 -------
@@ -44,5 +44,3 @@ Licenza
 [MacTeX]: http://www.tug.org/mactex
 [git]: http://help.github.com/git-installation-redirect
 [ruby]: http://www.ruby-lang.org/it/
-[gnuplot]: http://gnuplot.info/
-[pdf]: http://www.pdflib.com/
