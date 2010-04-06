@@ -1,24 +1,11 @@
-graphs = (FileList[ '*.gnuplot' ] - [ 'common.gnuplot' ]).map do |g|
-  File.basename(g, File.extname(g)) + '.pdf'
-end
-
-graphs.each do |g|
-  desc "Plots #{g}"
-  file g do |t|
-    gplotfile = File.basename(g, File.extname(g)) + '.gnuplot'
-    print "Plotting #{g}... "
-    puts `gnuplot #{gplotfile}`
-  end
-end
-
 desc "Compiles appunti.pdf"
-file "appunti.pdf" => graphs do |t|
+file "appunti.pdf" do |t|
   2.times do # needs to compile 2 times to get the index
     puts `pdflatex appunti.tex`
   end
 end
 
-desc "Cleans crap"
+desc "Clean crap"
 task :clean do
   would_remove = `git clean -x -n`
   unless would_remove == ""
