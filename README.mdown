@@ -29,7 +29,7 @@ Le volte successive basterà:
 
     cd appunti-cps
     git pull
-    rake clean && rake
+    rake
 
 Naturalmente vi serviranno [git][], [ruby][] e una distribuzione TeX recente, come [TeX Live][] o [MacTeX][].
 

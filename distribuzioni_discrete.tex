@@ -20,3 +20,38 @@
   Una successione \( (E_i)_{i \in \mathbb{N}} \) di eventi stocasticamente indipendenti ed equiprobabili, ovvero tali per cui vale che
   \[ \pr(E_i) = p, ~ \forall i \in \mathbb{N} \]
 \end{definition}
+
+\section{Distribuzione binomiale}
+\begin{figure*}
+  \includegraphics{distribuzione_binomiale}
+  \caption{Distribuzione binomiale % e la sua approssimazione a distribuzione normale (vedi definizione \ref{def:distribuzione_normale})
+  } 
+\end{figure*}
+\begin{definition}[Distribuzione binomiale]\label{def:}
+  La distribuzione discreta di probabilità
+  \footnote{vedi definizione \ref{def:distribuzione_di_probabilita}}
+  di ottenere $k$ successi su $n$ prove di Bernoulli
+  \footnote{ovvero dove il risultato è positivo con probabilità $p$ e negativo con probabilità \( (1-p) \), vedi definizione \ref{def:schema_bernoulli}}.  
+\end{definition}
+
+Dato uno Schema di Bernoulli \( (E_i)_{i \in \mathbb{N}} \) definiamo il numero di successi su $n$ prove come
+\[ S_n = (E_1 + \ldots + E_n) \]
+dove, ovviamente
+\[ I(S_n) = \{0,1, \ldots, n\} \]
+
+La distribuzione di probabilità dunque è, tramite i costituenti:
+\[ \pr(S_n = k) = \sum_{Q \subset (S_n = k)} \pr(Q) \]
+ovvero dobbiamo sommare tutte le probabilità dei costituenti del primo tipo dell'evento \( (S_n = k) \), come, ad esempio
+\[ Q = E_1 \cdots E_k \tilde{E_{k+1}} \cdots \tilde{E_n}\]
+che rappresenta l'evento in cui i $k$ successi si sono ottenuti con le prime $k$ prove.
+Analogamente ogni altro costituente di \( (S_n = k) \) conterrà $k$ eventi che si sono verificati e \( n-k \) che non si sono verificati.
+Siccome tutti gli eventi sono indipendenti ed equamente distribuiti, ogni costituente $Q$ ha la stessa probabilità, pari a
+\[ \pr(Q) = p^k (1-p)^{n-k} \]
+
+Dunque per avere \( \pr(S_n = k) \), basta contare i costituenti.
+Essi sono uguali al numero di modi di scegliere i $k$ eventi che si verificano sugli $n$ totali. Si ottiene quindi
+\[
+  \pr(S_n = k) = \binom{n}{k} p^k (1-p)^{n-k} 
+\]
+
+Si dice dunque che \( S_n \) ha distribuzione binomiale \( \mathcal{B}(n, p) \) dove $n$ è il numero degli eventi e $p$ la probabilità di ognuno.

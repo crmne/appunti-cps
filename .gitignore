@@ -1,8 +1,9 @@
 # Attenzione all'ordine
-*
+*.*
 !*.tex
 !*.bib
 !*.mdown
+!*.asy
 !Rakefile
 .*
 !.gitignore
