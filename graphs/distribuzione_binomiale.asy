@@ -17,7 +17,9 @@ real[] binomDistr(int n, real p) {
 int  n = 12;
 real p = 0.5;
 
-histogram(binomDistr(n,p),fillpen=red,drawpen=black,bars=true);
+histogram(binomDistr(n,p),fillpen=red,drawpen=black,bars=true,
+  legend="$\mathcal{B}(n="+(string)n+",\; p="+(string)p+")$");
 
 xaxis("$k$",BottomTop,LeftTicks);
 yaxis("$\textbf{P}(S_n = k)$",LeftRight,RightTicks(trailingzero));
+attach(scale(0.75)*legend(),10,130N,UnFill);

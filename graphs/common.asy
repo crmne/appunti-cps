@@ -4,7 +4,8 @@ private import stats;
 // Prende in input un array di dati e plotta il grafico centrando le barre
 void histogram(picture pic=currentpicture, real[] data,
   real low=-infinity, pen fillpen=nullpen,
-  pen drawpen=nullpen, bool bars=false)
+  pen drawpen=nullpen, bool bars=false,
+  Label legend="", real markersize=legendmarkersize)
 {
   if((fillpen == nullpen || bars == true) && drawpen == nullpen)
     drawpen=currentpen;
@@ -43,4 +44,11 @@ void histogram(picture pic=currentpicture, real[] data,
   if(!bars && last != low)
     draw(pic,Scale(pic,(bins[n],last))--Scale(pic,(bins[n],low)),drawpen);
   endgroup(pic);
+  if(legend.s != "") {
+    marker m=marker(scale(markersize)*shift((-0.5,-0.5))*unitsquare,
+      drawpen,fillpen == nullpen ? Draw :
+    (drawpen == nullpen ? Fill(fillpen) : FillDraw(fillpen)));
+    legend.p(drawpen);
+    pic.legend.push(Legend(legend.s,legend.p,invisible,m.f));
+  }
 }
