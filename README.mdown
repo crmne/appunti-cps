@@ -27,7 +27,6 @@ Per la prima volta:
 
 Le volte successive basterà:
 
-    cd appunti-cps
     git pull
     rake
 
