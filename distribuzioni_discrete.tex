@@ -24,9 +24,9 @@
 \section{Distribuzione binomiale}
 \begin{figure*}
   \includegraphics{distribuzione_binomiale}
-  \caption{Distribuzione binomiale % e la sua approssimazione a distribuzione normale (vedi definizione \ref{def:distribuzione_normale})
-  } 
+  \caption{Distribuzione binomiale} 
 \end{figure*}
+
 \begin{definition}[Distribuzione binomiale]\label{def:}
   La distribuzione discreta di probabilità
   \footnote{vedi definizione \ref{def:distribuzione_di_probabilita}}
@@ -48,10 +48,20 @@ Analogamente ogni altro costituente di \( (S_n = k) \) conterrà $k$ eventi che 
 Siccome tutti gli eventi sono indipendenti ed equamente distribuiti, ogni costituente $Q$ ha la stessa probabilità, pari a
 \[ \pr(Q) = p^k (1-p)^{n-k} \]
 
-Dunque per avere \( \pr(S_n = k) \), basta contare i costituenti.
+\newthought{Dunque per avere \( \pr(S_n = k) \)}, basta contare i costituenti.
 Essi sono uguali al numero di modi di scegliere i $k$ eventi che si verificano sugli $n$ totali. Si ottiene quindi
 \[
   \pr(S_n = k) = \binom{n}{k} p^k (1-p)^{n-k} 
 \]
 
 Si dice dunque che \( S_n \) ha distribuzione binomiale \( \mathcal{B}(n, p) \) dove $n$ è il numero degli eventi e $p$ la probabilità di ognuno.
+
+\newthought{Calcoliamo infine la previsione di \( S_n \)}:
+\[
+  \pr(S_n) = \pr(E_1 + \ldots + E_n) = \sum_{i=1}^n \pr(E_i) = np
+\]
+\section{Distribuzione geometrica}
+\begin{figure*}
+  \includegraphics{distribuzione_geometrica}
+  \caption{Distribuzione geometrica} 
+\end{figure*}
