@@ -22,7 +22,7 @@ int n = 12;
 int H = 10;
 int Nt = 20;
 
-histogram(hypergeomDistr(n,H,Nt),fillpen=red,drawpen=black,bars=true,
+histogram(hypergeomDistr(n,H,Nt),fillpen=lightgray,drawpen=black,bars=true,
   legend="$\mathcal{H}(n="+(string)n+",\; H="+(string)H+",\; N="+(string)Nt+")$");
 
 xaxis("$i$",Bottom,RightTicks);

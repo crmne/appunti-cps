@@ -19,7 +19,7 @@ real[] geomDistr(real p) {
 
 real p = 0.2;
 
-histogram(geomDistr(p),fillpen=red,drawpen=black,bars=true,
+histogram(geomDistr(p),fillpen=lightgray,drawpen=black,bars=true,
   legend="$\mathcal{G}(p="+(string)p+")$");
 
 xaxis("$i$",Bottom,RightTicks);
