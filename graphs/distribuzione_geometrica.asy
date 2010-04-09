@@ -7,19 +7,21 @@ usepackage("mathpazo");
 size(15cm,5.4cm,IgnoreAspect);
 
 // Distribuzione geometrica
-real[] geomDistr(int n, real p) {
+real[] geomDistr(real p) {
+  int n = 1;
+  for(real d = 1; d > p/500; d = p*(1-p)^(n-1)) ++n;
   real[] distr = new real[n];
   for(int i = 0; i <= n; ++i)
-    distr[i] = p*(1-p)^i;
+    distr[i] = p*(1-p)^(i-1);
+  distr[0] = 0;
   return distr;
 }
 
-int  n = 12;
-real p = 0.5;
+real p = 0.2;
 
-histogram(geomDistr(n,p),fillpen=red,drawpen=black,bars=true,
-  legend="$\mathcal{G}(n="+(string)n+",\; p="+(string)p+")$");
+histogram(geomDistr(p),fillpen=red,drawpen=black,bars=true,
+  legend="$\mathcal{G}(p="+(string)p+")$");
 
-xaxis("$k$",BottomTop,LeftTicks);
-yaxis("$\textbf{P}(S_n = k)$",LeftRight,RightTicks(trailingzero));
-attach(scale(0.75)*legend(),10E,80N,UnFill);
+xaxis("$i$",Bottom,RightTicks);
+yaxis("$\textbf{P}(T = i)$",Left,LeftTicks(trailingzero));
+attach(scale(0.75)*legend(),25E,90N);

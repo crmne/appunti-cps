@@ -14,12 +14,12 @@ real[] binomDistr(int n, real p) {
   return distr;
 }
 
-int  n = 12;
+int  n = 20;
 real p = 0.5;
 
 histogram(binomDistr(n,p),fillpen=red,drawpen=black,bars=true,
   legend="$\mathcal{B}(n="+(string)n+",\; p="+(string)p+")$");
 
-xaxis("$k$",BottomTop,LeftTicks);
-yaxis("$\textbf{P}(S_n = k)$",LeftRight,RightTicks(trailingzero));
-attach(scale(0.75)*legend(),10E,80N,UnFill);
+xaxis("$k$",Bottom,RightTicks);
+yaxis("$\textbf{P}(S_n = k)$",Left,LeftTicks(trailingzero));
+attach(scale(0.75)*legend(),n-(n/6),90N);
