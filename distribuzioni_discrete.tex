@@ -114,7 +114,7 @@ dove \( D_k^n \) è una disposizione semplice\footnote{vedi definizione \ref{def
 \newthought{Dunque la previsione di \( X \) è}:
 \begin{align*}
   \pr(X) &= \sum_{i=1}^n \pr(E_i) \\
-  &= n \frac{N}{N}
+  &= n \frac{H}{N}
 \end{align*}
 
 % section distribuzione_ipergeometrica (end)
@@ -134,13 +134,13 @@ Dato uno schema di Bernoulli \( E_i \) ed un numero aleatorio \( T \) che rappre
   I(T) = \mathbb{N} \setminus \{ 0 \}
 \]
 \[
-  (T = i) = \tilde{E}_1 \cdot \tilde{E}_{i-1} E_i
+  (T = i) = \tilde{E}_1 \cdots \tilde{E}_{i-1} E_i
 \]
 
 La distribuzione discreta di probabilità è
 \begin{align*}
-  \pr(T = i) &= \pr(\tilde{E}_1 \cdot \tilde{E}_{i-1} E_i) \\
-  &= \pr(\tilde{E}_1) \cdot \pr(\tilde{E}_{i-1}) \pr(E_i) \\
+  \pr(T = i) &= \pr(\tilde{E}_1 \cdots \tilde{E}_{i-1} E_i) \\
+  &= \pr(\tilde{E}_1) \cdots \pr(\tilde{E}_{i-1}) \pr(E_i) \\
   &= (1-p)^{i-1} p  
 \end{align*}
 
