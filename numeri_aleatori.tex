@@ -1,7 +1,7 @@
 %!TEX root = appunti.tex
 %!TEX encoding = UTF-8 Unicode
 \chapter{Numeri aleatori}
-\section{Introduzione}
+\section{Introduzione} % (fold)
 La probabilità è la branca della matematica che studia i possibili esiti di eventi dati insieme alle relative verosimiglianze e distribuzioni.
 
 Nell'uso comune, il termine ``probabilità'' è usato per indicare la possibilità che un evento particolare (o un insieme di eventi) si verificherà, espressa su una scala lineare da 0 (impossibilità) a 1 (certezza) o come una percentuale compresa tra 0 e 100\%.
@@ -75,7 +75,9 @@ Caso particolare dei numeri aleatori sono i \emph{numeri certi}, quantità conos
   \end{align*}
 \end{definition}
 
-\section{Eventi}
+% section introduzione (end)
+
+\section{Eventi} % (fold)
 \begin{definition}[Evento]\label{def:evento}
   Caso particolare di numero aleatorio, dove \( I(E) \subseteq \{0,1\} \).
 \end{definition}
@@ -145,7 +147,7 @@ che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E 
   \( \vdash E_1 + \ldots + E_n = 1 \)
 \end{definition}
 
-\subsection{Costituenti}
+\subsection{Costituenti} % (fold)
 \marginnote{Intuitivamente un costituente è uno dei possibili modi di comporre gli eventi \( E_1, \ldots, E_n \).}
 \begin{definition}[Costituente]
   Si definisce costituente degli eventi \( E_1, \ldots, E_n \) l'evento
@@ -193,8 +195,11 @@ I costituenti possibili costituiscono una partizione:
 Se $E$ è logicamente dipendente da \( E_1, \ldots, E_n \) si può scrivere
 \[ E = \sum_{C \subset E} C \]
 
-\section{Previsione e Probabilità}
-\subsection{Previsione}
+% subsection costituenti (end)
+% section eventi (end)
+
+\section{Previsione e Probabilità} % (fold)
+\subsection{Previsione} % (fold)
 \marginnote{La previsione non tenta di indovinare il risultato, ma trasforma, molto ottimisticamente, un'incertezza in una certezza ben definita, ma di nessun valore oggettivo.}
 \begin{definition}[Previsione]
   Esprime l'equivalente certo del fenomeno casuale rappresentato da un numero aleatorio $X$, e si denota con $\pr(X)$.
@@ -302,7 +307,9 @@ Per i numeri aleatori illimitati\footnote{quelli per cui \( \inf I(X) \), \( \su
   \end{align*}
 \end{proof}
 
-\subsection{Probabilità di eventi}
+% subsection previsione (end)
+
+\subsection{Probabilità di eventi} % (fold)
 \begin{definition}[Probabilità]\label{def:probabilita}
   Dato un evento \( E \), \( \pr(E) \) si chiama anche probabilità di \( E \).
 \end{definition}
@@ -343,14 +350,17 @@ Per una partizione: % TODO queste non sono altre proprietà?
 Dunque la probabilità che si verifichi un determinato evento di una partizione di eventi equiprobabili è
 \[ \pr(E_i) = \frac{1}{n} \]
 
-\subsection{Probabilità e previsione subordinata}
+% subsection probabilita (end)
+
+\subsection{Probabilità e previsione subordinata} % (fold)
 \begin{definition}[Previsione subordinata]
   La previsione subordinata\footnote{detta anche previsione condizionata} di un numero aleatorio $X$ rispetto ad un evento $E$, denotata con \( \pr(X|E) \), è la previsione di $X$ sapendo che $E$ si sia verificato.
 \end{definition}
 
 Inoltre \( I(X|E) \subset I(X) \).
 
-\begin{definition}[Primo criterio di coerenza]\label{def:criterio_coerenza_1_probabilita}
+\begin{definition}[Primo criterio di coerenza]
+  \label{def:criterio_coerenza_1_probabilita}
   È molto simile al criterio di coerenza della previsione
   \footnote{vedi definizione \ref{def:criterio_coerenza_1_previsione}}:
   \[ G = \lambda E (X - \bar{x}) \]
@@ -373,7 +383,9 @@ Inoltre \( I(X|E) \subset I(X) \).
 
 che seguono allo stesso modo dal criterio di coerenza.
 
-\subsection{Probabilità composta}
+% subsection probabilita_e_previsione_subordinata (end)
+
+\subsection{Probabilità composta} % (fold)
 \begin{theorem}[Probabilità composta]\label{thm:probabilita_composta}
   Dati due eventi $A$ e $B$, si ha che:
   \marginnote{In alcuni testi la probabilità composta viene denotata con \( \pr(A\cap B) \).}
@@ -413,7 +425,9 @@ Il teorema della probabilità composta può essere generalizzato alla previsione
 \end{corollary}
 La dimostrazione è analoga al teorema della probabilità composta\footnote{vedi teorema \ref{thm:probabilita_composta}}.
 
-\subsection{Probabilità totale}
+% subsection probabilita_composta (end)
+
+\subsection{Probabilità totale} % (fold)
 Il teorema della probabilità totale è utile per valutare la previsione conoscendo la previsione subordinata.
 
 \begin{theorem}[Probabilità totale]\label{thm:probabilita_totale}
@@ -431,7 +445,9 @@ Il teorema della probabilità totale è utile per valutare la previsione conosce
   \end{align*}
 \end{proof}
 
-\subsection{Teorema di Bayes}
+% subsection probabilita_totale (end)
+
+\subsection{Teorema di Bayes} % (fold)
 \begin{theorem}[Teorema di Bayes]
   Dati due eventi $A$ ed $B$, con \( \pr(A) > 0 \), si ha:
   \[ \pr(B|A) = \frac{\pr(A|B)\pr(B)}{\pr(A)} \]
@@ -445,7 +461,9 @@ Il teorema della probabilità totale è utile per valutare la previsione conosce
   \end{gather*}
 \end{proof}
 
-\subsection{Correlazione tra eventi}
+% subsection teorema_bayes (end)
+
+\subsection{Correlazione tra eventi} % (fold)
 \begin{definition}[Eventi correlati positivamente]
   \label{def:eventi_correlati_positivamente}
   Un evento $E$ si dice correlato positivamente con $H$ se
@@ -476,7 +494,9 @@ Il teorema della probabilità totale è utile per valutare la previsione conosce
 
 Se $E$ è correlato positivamente con $H$, si ha che \( \tilde{E} \) è correlato negativamente e viceversa. % TODO dimostrazione
 
-\subsection{Indipendenza stocastica}
+% subsection correlazione_tra_eventi (end)
+
+\subsection{Indipendenza stocastica} % (fold)
 Se due eventi non sono correlati\footnote{vedi definizione \ref{def:eventi_non_correlati}} sono \emph{stocasticamente indipendenti}, mentre il contrario non è sempre vero.
 \marginnote{Stocastico viene dal greco stochastikós ``congetturale'', e significa ``relativo al calcolo delle probabilità''.
   Talvolta l'indipendenza stocastica viene chiamata indipendenza statistica.}
@@ -498,8 +518,11 @@ La definizione è analoga per gli eventi subordinati:
   \[ \pr(Q) = \pr(E_1^*) \cdots \pr(E_n^*) \]
 \end{definition}
 
-\section{Varianza e covarianza}
-\subsection{Covarianza}
+% subsection indipendenza_stocastica (end)
+% section previsione_e_probabilita (end)
+
+\section{Varianza e covarianza} % (fold)
+\subsection{Covarianza} % (fold)
 \begin{definition}[Covarianza]\label{def:covarianza}
   Dati due numeri aleatori $X$ ed $Y$, si definisce covarianza di $X$ ed $Y$:
   \begin{align*}
@@ -549,7 +572,9 @@ La definizione è analoga per gli eventi subordinati:
   \end{align*}
 \end{proof}
 
-\subsection{Varianza}
+% subsection covarianza (end)
+
+\subsection{Varianza} % (fold)
 \begin{definition}[Varianza]\label{def:varianza}
   \begin{align*}
     \var(X) &= \cov(X,X) \\
@@ -578,7 +603,10 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
   La proprietà della varianza segue dalla trasformazione lineare della covarianza\footnote{vedi proposizione \ref{pro:trasformazione_lineare_covarianza}} sostituendo \( (cY + d) \) con \( (aX + b) \).
 \end{proof}
 
-\section{Regressione Lineare} % TODO organizzare
+% subsection varianza (end)
+% section varianza_e_covarianza (end)
+
+\section{Regressione Lineare} % (fold)
 \begin{definition}[Regressione lineare]
   Date due variabili aleatorie $X$ ed $Y$ la regressione lineare ci permette di calcolare la migliore approssimazione lineare del legame tra di esse.
   L'approssimazione lineare è tanto buona quanto la seguente quantità è piccola:
@@ -611,7 +639,9 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
 
 \end{proof}
 
-\section{Disuguaglianze di Čebyšëv} % TODO organizzare
+% section regressione_lineare (end)
+
+\section{Disuguaglianze di Čebyšëv} % (fold)
 \begin{definition}[Prima disuguaglianza di Čebyšëv]\label{def:chebyshev1}
   Sia $X$ un numero aleatorio tale che \( P_Q(X) > 0 \), allora per ogni \( t > 0 \) vale che
   \[ \pr(|X| \ge t P_Q(X)) \le \frac{1}{t^2} \]
@@ -640,7 +670,9 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
   Segue dalla prima disuguaglianza di Čebyšëv\footnote{vedi definizione \ref{def:chebyshev1}}, sostituendo ad $X$ il numero aleatorio \( Y = X - m \).
 \end{proof}
 
-\section{Legge debole dei grandi numeri}
+% section disuguaglianze_di_chebyshev (end)
+
+\section{Legge debole dei grandi numeri} % (fold)
 La legge debole dei grandi numeri\footnote{nota anche come teorema di Bernoulli} fornisce una formalizzazione del fatto che la frequenza di un evento in un grande numero di prove ripetute indipendenti è vicino alla sua probabilità.
 
 \begin{theorem}[Legge debole dei grandi numeri]\label{thm:teorema_bernoulli}
@@ -672,7 +704,9 @@ La legge debole dei grandi numeri\footnote{nota anche come teorema di Bernoulli}
   \[ \lim_{n \rightarrow \infty} \pr(|X - m| \ge \lambda) = 0 \]
 \end{proof}
 
-\section{Coefficiente di correlazione}
+% section legge_debole_dei_grandi_numeri (end)
+
+\section{Coefficiente di correlazione} % (fold)
 Il coefficiente di correlazione è la misura di quanto siano vicini i dati alla curva di approssimazione.
 
 \begin{definition}[Coefficiente di correlazione]
@@ -722,3 +756,5 @@ I numeri aleatori standardizzati hanno due caratteristiche interessanti: \( \pr(
   Quindi vale che:
   \[ -1 \le \cc(X,Y) \le 1 \]
 \end{proof}
+
+% section coefficiente_di_correlazione (end)
