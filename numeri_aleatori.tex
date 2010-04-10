@@ -337,7 +337,7 @@ Per i numeri aleatori illimitati\footnote{quelli per cui \( \inf I(X) \), \( \su
 Per la monotonia della previsione\footnote{vedi proposizione \ref{pro:monotonia_previsione}} si ha che:
 \[ \vdash E_1 \vee E_2 \le E_1 + E_2 \Rightarrow \pr(E_1 \vee E_2) \le \pr(E_1 + E_2) \]
 
-Per una partizione: % TODO queste non sono altre proprietà?
+Per una partizione: % DOUBT queste non sono altre proprietà?
 \[ \vdash E_1 + \ldots + E_n = 1 \Rightarrow \sum \pr(E_i) = 1 \]
 
 \begin{proposition}[Calcolare la probabilità]
@@ -421,7 +421,7 @@ Se gli eventi sono indipendenti si ha che \( \pr(B|A) = \pr(B) \) e analogamente
 Il teorema della probabilità composta può essere generalizzato alla previsione:
 \begin{corollary}[Previsione composta]
   Dati due numeri aleatori $X$ ed $Y$, si ha che:
-  \[ \pr(XY) = \pr(Y)\pr(X|Y) = \pr(X)\pr(Y|X) \] % TODO sicuro?
+  \[ \pr(XY) = \pr(Y)\pr(X|Y) = \pr(X)\pr(Y|X) \] % DOUBT sicuro?
 \end{corollary}
 La dimostrazione è analoga al teorema della probabilità composta\footnote{vedi teorema \ref{thm:probabilita_composta}}.
 
@@ -611,7 +611,7 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
   Date due variabili aleatorie $X$ ed $Y$ la regressione lineare ci permette di calcolare la migliore approssimazione lineare del legame tra di esse.
   L'approssimazione lineare è tanto buona quanto la seguente quantità è piccola:
   \[ \pr((Y - aX - b)^2) \]
-  dove \( Y = aX + b \). % TODO e allora a che serve?
+  dove \( Y = aX + b \). % DOUBT e allora a che serve?
 
   Per fare in modo che quella quantità sia più piccola possibile bisogna trovare la coppia \( (a,b) \in \mathbb{R}^2 \) che minimizza il risultato, ovvero:
   \begin{gather*}
@@ -649,7 +649,7 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
 
 \begin{proof}
   Sia l'evento \( E = (|X| \ge t P_Q(X)) \). Calcoliamo \( \pr(X^2) \) con il teorema delle probabilità totali\footnote{vedi teorema \ref{thm:probabilita_totale}}:
-  \[ \pr(X^2) = \pr(X^2|E)\pr(E) + \pr(X^2|\tilde{E})\pr(\tilde{E}) \] % TODO manca qualcosa...
+  \[ \pr(X^2) = \pr(X^2|E)\pr(E) + \pr(X^2|\tilde{E})\pr(\tilde{E}) \] % DOUBT manca qualcosa...
   Per la monotonia della previsione\footnote{vedi proposizione \ref{pro:monotonia_previsione}} si ha che \( \pr(X^2|\tilde{E}) \ge 0 \) in quanto \( X^2 \) è un numero aleatorio sempre positivo.
   Ne segue che:
   \[ \pr(X^2) \ge \pr(X^2|E)\pr(E) \]
@@ -677,7 +677,7 @@ La legge debole dei grandi numeri\footnote{nota anche come teorema di Bernoulli}
 
 \begin{theorem}[Legge debole dei grandi numeri]\label{thm:teorema_bernoulli}
   Sia \( X_1,X_2, \ldots \) una successione di numeri aleatori a due a due non correlati, ovvero con \( \cov(X_i, X_j) ~ i \ne j \), equamente distribuiti ed aventi la stessa previsione \( \pr(X_i) = m \) e varianza \( \var(X_i) = \var \).
-  % TODO varianza o sqm? ed è giusta quella eq? se si che senso ha?
+  % DOUBT varianza o sqm? ed è giusta quella eq? se si che senso ha?
   Definiamo una nuova variabile:
   \[ X \equiv \frac{X_1 + \ldots + X_n}{n} \]
   Sarà:
