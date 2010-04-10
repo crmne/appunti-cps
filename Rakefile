@@ -1,4 +1,5 @@
 require "rake/clean"
+require "source_annotation_extractor"
 
 CLEAN.include '*.aux', '*.log', '*.out', '*.toc', '*.fls', '.appunti.*'
 CLOBBER.include '*.pdf', 'graphs/*.pdf'
@@ -38,4 +39,18 @@ graphs.each do |graph|
     end
   end
 
+end
+
+desc "Enumerate all annotations."
+task :notes do
+  SourceAnnotationExtractor.enumerate "DOUBT|FIXME|TODO", :tag => true
+end
+
+namespace :notes do
+  ["DOUBT", "FIXME", "TODO"].each do |annotation|
+    desc "Enumerate all #{annotation} annotations."
+    task annotation.downcase.intern do
+      SourceAnnotationExtractor.enumerate annotation
+    end
+  end
 end
