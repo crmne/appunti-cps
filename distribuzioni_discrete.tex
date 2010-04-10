@@ -126,6 +126,41 @@ E la sua varianza è:
 \end{align*}
 % section distribuzione_ipergeometrica (end)
 
+\section{Indipendenza di partizioni} % (fold)
+% DOUBT anche se sul libro e sugli appunti è qui, non starebbe meglio nella sezione sulle partizioni?
+\begin{definition}[Indipendenza di partizioni]
+  \label{def:indipendenza_di_partizioni}
+  Date due partizioni
+  \[
+    \mathcal{H} = (H_1, \ldots, H_m) \text{ e } \mathcal{L} = (L_1, \ldots, L_n)
+  \]
+  \( \mathcal{H} \) e \( \mathcal{L} \) sono stocasticamente indipendenti se comunque prendo un evento della prima ed un evento della seconda
+  \footnote{ovvero \( \forall i, j; ~ 1 \le i \le m, ~ 1 \le j \le n \)}
+  \[
+    \pr(H_i L_j) = \pr(H_i) \pr(L_j)
+  \]
+\end{definition}
+
+L'indipendenza di partizioni generalizza il caso degli eventi
+\footnote{vedi definizione \ref{def:indipendenza_stocastica}},
+perché ad un evento può corrispondere una partizione:
+\begin{definition}[Indipendenza di eventi tramite partizioni]
+  Dati due numeri aleatori \( X \) ed \( Y \) con
+  \[
+    I(X) = \{ x_1, \ldots, x_m \}, ~ I(Y) = \{ y_1, \ldots, y_n \}
+  \]
+  definiamo gli eventi
+  \[
+    H_i = (X = x_i), ~ L_j = (Y = y_i)
+  \]
+  e le partizioni
+  \[
+    \mathcal{H} = (H_1, \ldots, H_m), ~ \mathcal{L} = (L_1, \ldots, L_n)
+  \]
+  \( X \) ed \( Y \) si dicono stocasticamente indipendenti se lo sono le partizioni \( \mathcal{H} \) ed \( \mathcal{L} \).
+\end{definition}
+% section indipendenza_di_partizioni (end)
+
 \section{Distribuzione geometrica} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_geometrica}
