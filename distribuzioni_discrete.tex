@@ -161,6 +161,63 @@ perché ad un evento può corrispondere una partizione:
 \end{definition}
 % section indipendenza_di_partizioni (end)
 
+\section{Distribuzione congiunta e marginale} % (fold)
+\begin{definition}[Distribuzione congiunta]
+  \label{def:distribuzione_congiunta}
+  La funzione che definisce la probabilità di eventi definiti in termini di due numeri aleatori \( X \) ed \( Y \):
+  \[
+    p(x,y) \equiv \pr(X = x, Y = y)
+  \]
+  dove:
+  \[
+    (x,y) \in I(X,Y)
+  \]
+\end{definition}
+È possibile rappresentare l'insieme dei valori che può assumere la funzione tramite la matrice:
+\[
+  \begin{pmatrix}
+    p(x_1, y_1) & \dots & p(x_1, y_n) \\
+    \vdots & \ddots & \vdots \\
+    p(x_m, y_1) & \dots & p(x_m, y_n)
+  \end{pmatrix}
+\]
+
+Inoltre:
+\[
+  \sum_x \sum_y p(x,y) = 1
+\]
+
+
+\begin{definition}[Distribuzione marginale]
+  \label{def:distribuzione_marginale}
+  Dato un numero aleatorio \( X \) è la funzione
+  \[
+    p(x) \equiv \pr(X = x)
+  \]
+
+  Conoscendo la distribuzione congiunta possiamo determinare la marginale, perché
+  \begin{align*}
+    p_1(x) &= \pr(X = x) \\
+    &= \sum_{j = 1}^n \pr(X = x, Y = y_j) \\
+    &= \sum_{j = 1}^n p(x, y_j)
+  \end{align*}
+  o analogamente per \( y \)
+  \begin{align*}
+    p_2(y) &= \pr(Y = y) \\
+    &= \sum_{i = 1}^m \pr(X = x_i, Y = y) \\
+    &= \sum_{i = 1}^m p(x_i, y)
+  \end{align*}
+\end{definition}
+
+\begin{definition}[Indipendenza stocastica tramite la distribuzioni marginale]
+  Due numeri aleatori \( X \) ed \( Y \) sono stocasticamente indipendenti se
+  \[
+    \forall i,j ~~ p(x_i, y_j) = p_1(x_i) p_2(y_j)
+  \]
+\end{definition}
+
+% section distribuzione_congiunta_e_marginale (end)
+
 \section{Distribuzione geometrica} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_geometrica}
