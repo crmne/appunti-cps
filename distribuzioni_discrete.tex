@@ -118,7 +118,7 @@ dove \( D_k^n \) è una disposizione semplice\footnote{vedi definizione \ref{def
   &= n \frac{H}{N}
 \end{align*}
 
-E la sua varianza è:
+\newthought{E la sua varianza è}:
 \begin{align*}
   \var(S_n) &= \var \left(\sum_{i = 1}^n E_i\right) \\
   &= \sum_{i = 1}^n \var(E_i) + \sum_{i,j ~ i \neq j} \cov(E_i, E_j) \\ % DOUBT non ho la più pallida idea del perché
@@ -252,6 +252,7 @@ Utilizzando la somma della serie geometrica, si verifica che
   &= 1
 \end{align*}
 
+% DOUBT come si chiama questo teorema?
 \marginnote{Per ottenere questi ultimi due risultati abbiamo usato il fatto che
 \begin{align*}
   \sum_{i=1}^{+ \infty} i x^{i-i} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
@@ -259,6 +260,7 @@ Utilizzando la somma della serie geometrica, si verifica che
   &= \frac{d}{dx} (\frac{1}{1-x}) \\
   &= \frac{1}{(1-x)^2}
 \end{align*}}
+
 \newthought{Possiamo dunque calcolare la previsione di \( T \)}:
 \begin{align*}
   \pr(T) &= \sum_{i=1}^{+ \infty} i \pr(T = i) \\
@@ -266,6 +268,14 @@ Utilizzando la somma della serie geometrica, si verifica che
   &= p \sum_{i=1}^{+ \infty} i (i - p)^{i-1} \\
   &= p \frac{1}{p^2} \\
   &= \frac{1}{p}
+\end{align*}
+
+% TODO dimostrare perché \pr(T^2) = \frac{2-p}{p^2}
+\newthought{E, dato \( \pr(T^2) = \frac{2-p}{p^2} \), la sua varianza}:
+\begin{align*}
+  \var(T) &= \pr(T^2) - \pr(T)^2 \\
+  &= \frac{2-p}{p^2} - \frac{1}{p^2} \\
+  &= \frac{1-p}{p^2}
 \end{align*}
 
 % section distribuzione_geometrica (end)
