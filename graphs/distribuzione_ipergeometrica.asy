@@ -1,10 +1,4 @@
-import graph;
 import common;
-
-usepackage("palatino");
-usepackage("mathpazo");
-
-size(15cm,5.4cm,IgnoreAspect);
 
 // Distribuzione ipergeometrica
 real[] hypergeomDistr(int n, int H, int Nt) {
@@ -22,9 +16,11 @@ int n = 12;
 int H = 10;
 int Nt = 20;
 
-histogram(hypergeomDistr(n,H,Nt),fillpen=lightgray,drawpen=black,bars=true,
+histogram(hypergeomDistr(n,H,Nt), fillpen=fillpen, drawpen=drawpen, bars=bars,
   legend="$\mathcal{H}(n="+(string)n+",\; H="+(string)H+",\; N="+(string)Nt+")$");
 
 xaxis("$i$",Bottom,RightTicks);
 yaxis("$\textbf{P}(X = i)$",Left,LeftTicks(trailingzero));
-attach(scale(0.75)*legend(),n-(n/4),90N);
+real xp = truepoint(E).x;
+real yp = truepoint(N).y;
+attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/4),UnFill);

@@ -1,10 +1,4 @@
-import graph;
 import common;
-
-usepackage("palatino");
-usepackage("mathpazo");
-
-size(15cm,5.4cm,IgnoreAspect);
 
 // Distribuzione binomiale
 real[] binomDistr(int n, real p) {
@@ -17,9 +11,11 @@ real[] binomDistr(int n, real p) {
 int  n = 20;
 real p = 0.5;
 
-histogram(binomDistr(n,p),fillpen=lightgray,drawpen=black,bars=true,
+histogram(binomDistr(n,p), fillpen=fillpen, drawpen=drawpen, bars=bars,
   legend="$\mathcal{B}(n="+(string)n+",\; p="+(string)p+")$");
 
 xaxis("$k$",Bottom,RightTicks);
 yaxis("$\textbf{P}(S_n = k)$",Left,LeftTicks(trailingzero));
-attach(scale(0.75)*legend(),n-(n/6),90N);
+real xp = truepoint(E).x;
+real yp = truepoint(N).y;
+attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/4),UnFill);

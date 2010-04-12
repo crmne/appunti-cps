@@ -1,5 +1,16 @@
-private import graph;
+import graph;
 private import stats;
+
+usepackage("palatino");
+usepackage("mathpazo");
+
+size(15cm,5.4cm,IgnoreAspect);
+
+real e = 2.71828182845904523536;
+
+pen fillpen = lightred;
+pen drawpen = black;
+bool bars = true;
 
 // Prende in input un array di dati e plotta il grafico centrando le barre
 void histogram(picture pic=currentpicture, real[] data,
@@ -52,3 +63,4 @@ void histogram(picture pic=currentpicture, real[] data,
     pic.legend.push(Legend(legend.s,legend.p,invisible,m.f));
   }
 }
+
