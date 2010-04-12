@@ -6,7 +6,8 @@ CLOBBER.include '*.pdf', 'graphs/*.pdf'
 
 task :default => "appunti.pdf"
 
-graphs = FileList['graphs/*.asy'].exclude('graphs/common.asy').map { |g| g.ext 'pdf' }
+graph_common = 'graphs/common.asy'
+graphs = FileList['graphs/*.asy'].exclude(graph_common).map { |g| g.ext 'pdf' }
 
 desc "Plot all the graphs."
 task :graphs => graphs
@@ -33,7 +34,7 @@ graphs.each do |graph|
   asyfile = graph.ext 'asy'
 
   # Generate per-graph task
-  file graph => asyfile do |t|
+  file graph => [ asyfile, graph_common ] do |t|
     Dir.chdir File.dirname graph do
       sh "asy -v -tex pdflatex #{File.basename(asyfile)}"
     end
