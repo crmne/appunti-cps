@@ -187,7 +187,6 @@ Inoltre:
   \sum_x \sum_y p(x,y) = 1
 \]
 
-
 \begin{definition}[Distribuzione marginale]
   \label{def:distribuzione_marginale}
   Dato un numero aleatorio \( X \) è la funzione
@@ -215,6 +214,7 @@ Inoltre:
     \forall i,j ~~ p(x_i, y_j) = p_1(x_i) p_2(y_j)
   \]
 \end{definition}
+% TODO gli appunti finiscono qui, ma sul libro a questo punto c'è altra roba...
 
 % section distribuzione_congiunta_e_marginale (end)
 
@@ -245,13 +245,27 @@ La distribuzione discreta di probabilità è
 
 Si dice che \( T \) ha distribuzione geometrica di parametro \( p \).
 Utilizzando la somma della serie geometrica, si verifica che
-\[
-  \sum_{i=1}^{+ \infty} \pr(T = i) = 1
-\]
+\begin{align*}
+  \sum_{i=1}^{+ \infty} \pr(T = i) &= \sum_{i=1}^{+ \infty} (1-p)^{i-1} p \\
+  &= p \sum_{i=1}^{+ \infty} (1-p)^{i-1}  \\
+  &= p \frac{1}{1-(1-p)} \\
+  &= 1
+\end{align*}
 
+\marginnote{Per ottenere questi ultimi due risultati abbiamo usato il fatto che
+\begin{align*}
+  \sum_{i=1}^{+ \infty} i x^{i-i} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
+  &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
+  &= \frac{d}{dx} (\frac{1}{1-x}) \\
+  &= \frac{1}{(1-x)^2}
+\end{align*}}
 \newthought{Possiamo dunque calcolare la previsione di \( T \)}:
-\[
-  \pr(T) = \frac{1}{p}
-\]
+\begin{align*}
+  \pr(T) &= \sum_{i=1}^{+ \infty} i \pr(T = i) \\
+  &= \sum_{i=1}^{+ \infty} i (i - p)^{i-1} p \\
+  &= p \sum_{i=1}^{+ \infty} i (i - p)^{i-1} \\
+  &= p \frac{1}{p^2} \\
+  &= \frac{1}{p}
+\end{align*}
 
 % section distribuzione_geometrica (end)
