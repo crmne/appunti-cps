@@ -218,7 +218,7 @@ Utilizzando la somma della serie geometrica, si verifica che
 \end{align*}
 
 % DOUBT come si chiama questo teorema?
-\marginnote{Per ottenere questi ultimi due risultati abbiamo usato il fatto che
+\marginnote{Per ottenere questi ultimi due risultati abbiamo usato la serie notevole
 \begin{align*}
   \sum_{i=1}^{+ \infty} i x^{i-1} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
   &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
@@ -251,6 +251,17 @@ Utilizzando la somma della serie geometrica, si verifica che
   \caption{Distribuzione di Poisson} 
 \end{figure*}
 
+\begin{definition}[Distribuzione di Poisson]
+  \label{def:distribuzione_di_poisson}
+  La distribuzione discreta della probabilità di ottenere \( i \) successi in un intervallo di tempo fissato,
+  se questi eventi si verificano con una frequenza media nota e indipendentemente dal tempo passato dall'ultimo evento.
+
+  È uguale a
+  \[
+    Pois(\lambda) \equiv \pr(X = i) = \frac{\lambda^i}{i!} e^{- \lambda}
+  \]
+  dove \( \lambda \) è un numero reale positivo, pari al numero atteso di eventi che si verificano durante l'intervallo di tempo.
+\end{definition}
 % section distribuzione_di_poisson (end)
 
 \section{Indipendenza di partizioni} % (fold)

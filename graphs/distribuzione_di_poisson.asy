@@ -11,10 +11,10 @@ real[] poissonDistr(real lambda, real min=0.0001) {
   return distr;
 }
 
-real lambda = 4.2;
+real lambda = 4;
 
 histogram(poissonDistr(lambda,min=0.001), fillpen=fillpen, drawpen=drawpen, bars=bars,
-  legend="$\mathcal{P}(\lambda="+(string)lambda+")$");
+  legend="$Pois(\lambda="+(string)lambda+")$");
 
 xaxis("$i$",Bottom,RightTicks);
 yaxis("$\textbf{P}(X = i)$",Left,LeftTicks(trailingzero));
