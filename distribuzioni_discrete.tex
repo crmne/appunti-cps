@@ -260,8 +260,34 @@ Utilizzando la somma della serie geometrica, si verifica che
   \[
     Pois(\lambda) \equiv \pr(X = i) = \frac{\lambda^i}{i!} e^{- \lambda}
   \]
-  dove \( \lambda \) è un numero reale positivo, pari al numero atteso di eventi che si verificano durante l'intervallo di tempo.
+  dove \( \lambda \) è un numero reale positivo, pari al numero atteso di eventi che si verificano durante l'intervallo di tempo e \( I(X) = \mathbb{N} \).
 \end{definition}
+
+\newthought{La previsione di \( X \) è}:
+\marginnote{Utilizziamo la serie notevole \[ \sum_{k=0}^{+ \infty} \frac{x^k}{k!} = e^x \] e il fatto che \[ \frac{i}{i!} = \frac{1}{(i-1)!} \]}
+\begin{align*}
+  \pr(X) &= \sum_{i=0}^{+ \infty} i \pr(X = i) \\
+  &= \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!} e^{- \lambda} \\
+  &= e^{- \lambda} \sum_{i=0}^{+ \infty} \frac{\lambda^i}{(i-1)!} \\
+  &= \lambda e^{- \lambda} \sum_{i=1}^{+ \infty} \frac{\lambda^{i-1}}{(i-1)!} \\
+  &= \lambda e^{- \lambda} \sum_{i=0}^{+ \infty} \frac{\lambda^{i}}{i!} \\
+  &= \lambda e^{- \lambda} e^\lambda \\
+  &= \lambda
+\end{align*}
+
+\newthought{La varianza di \( X \) è}:
+\begin{align*}
+  \pr(X^2) &= \sum_{i=0}^{+ \infty} i^2 \pr(X = i) \\
+  &= \sum_{i=0}^{+ \infty} i^2 \frac{\lambda^i}{i!} e^{- \lambda} \\
+  &= \sum_{i=0}^{+ \infty} [(i^2 - i) + i] \frac{\lambda^i}{i!} e^{- \lambda} \\
+  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} i(i - 1) \frac{\lambda^i}{i!} + \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}) \\
+  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{1(i - 1)\lambda^i}{(i-1)!} + \lambda e^\lambda) \\
+  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{1\lambda^i}{((i-1)-1)!} + \lambda e^\lambda) \\
+  &= e^{- \lambda} (\lambda^2 \sum_{i=2}^{+ \infty} \frac{\lambda^{i-2}}{(i-2)!} + \lambda e^\lambda) \\
+  &= e^{- \lambda} (\lambda^2 \sum_{i=0}^{+ \infty} \frac{\lambda^i}{i!} + \lambda e^\lambda) \\
+  &= e^{- \lambda} (\lambda^2 e^\lambda + \lambda e^\lambda) \\
+  &= \lambda^2 + \lambda
+\end{align*}
 % section distribuzione_di_poisson (end)
 
 \section{Indipendenza di partizioni} % (fold)
