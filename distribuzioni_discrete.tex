@@ -244,7 +244,7 @@ Utilizzando la somma della serie geometrica, si verifica che
 \end{definition}
 
 \newthought{La previsione di \( X \) è}:
-\marginnote{Utilizziamo la serie notevole \[ \sum_{k=0}^{+ \infty} \frac{x^k}{k!} = e^x \] e il fatto che \[ \frac{i}{i!} = \frac{1}{(i-1)!} \]}
+\marginnote{Utilizziamo la serie notevole \[ \sum_{k=0}^{+ \infty} \frac{x^k}{k!} = e^x \] e la definizione di fattoriale \[ i! = i(i-1)! \]}
 \begin{align*}
   \pr(X) &= \sum_{i=0}^{+ \infty} i \pr(X = i) \\
   &= \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!} e^{- \lambda} \\
@@ -260,9 +260,8 @@ Utilizzando la somma della serie geometrica, si verifica che
   \pr(X^2) &= \sum_{i=0}^{+ \infty} i^2 \pr(X = i) \\
   &= \sum_{i=0}^{+ \infty} i^2 \frac{\lambda^i}{i!} e^{- \lambda} \\
   &= \sum_{i=0}^{+ \infty} [(i^2 - i) + i] \frac{\lambda^i}{i!} e^{- \lambda} \\
-  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} i(i - 1) \frac{\lambda^i}{i!} + \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}) \\
-  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{1(i - 1)\lambda^i}{(i-1)!} + \lambda e^\lambda) \\
-  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{1\lambda^i}{((i-1)-1)!} + \lambda e^\lambda) \\
+  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} i(i - 1) \frac{\lambda^i}{i(i-1)(i-2)!} + \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}) \\
+  &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{\lambda^i}{(i-2)!} + \lambda e^\lambda) \\
   &= e^{- \lambda} (\lambda^2 \sum_{i=2}^{+ \infty} \frac{\lambda^{i-2}}{(i-2)!} + \lambda e^\lambda) \\
   &= e^{- \lambda} (\lambda^2 \sum_{i=0}^{+ \infty} \frac{\lambda^i}{i!} + \lambda e^\lambda) \\
   &= e^{- \lambda} (\lambda^2 e^\lambda + \lambda e^\lambda) \\
