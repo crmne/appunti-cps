@@ -24,7 +24,7 @@
 \section{Distribuzione binomiale} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_binomiale}
-  \caption{Distribuzione binomiale} 
+  \caption{Distribuzione binomiale}
 \end{figure*}
 
 \begin{definition}[Distribuzione binomiale]
@@ -49,9 +49,7 @@ Siccome tutti gli eventi sono indipendenti ed equamente distribuiti, ogni costit
 
 Dunque per avere \( \pr(S_n = k) \), basta contare i costituenti.
 Essi sono uguali al numero di modi di scegliere i $k$ eventi che si verificano sugli $n$ totali. Si ottiene quindi
-\[
-  \pr(S_n = k) = \binom{n}{k} p^k (1-p)^{n-k} 
-\]
+\[ \pr(S_n = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
 
 Si dice dunque che \( S_n \) ha distribuzione binomiale \( \mathcal{B}(n, p) \) dove $n$ è il numero degli eventi e $p$ la probabilità di ognuno.
 
@@ -80,7 +78,7 @@ Si dice dunque che \( S_n \) ha distribuzione binomiale \( \mathcal{B}(n, p) \) 
 \section{Distribuzione ipergeometrica} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_ipergeometrica}
-  \caption{Distribuzione ipergeometrica} 
+  \caption{Distribuzione ipergeometrica}
 \end{figure*}
 
 \begin{definition}[Distribuzione ipergeometrica]
@@ -91,9 +89,7 @@ Consideriamo \( H \) modi per una ``buona'' selezione ed \( N - H \) per una ``c
 Prendiamo \( n \) campioni e sia
 \[ E_i = (\text{abbiamo una ``buona'' selezione all'}i\text{-esimo campione.}) \]
 Sia \( X \) il numero aleatorio che conta il numero di buone selezioni:
-\[
-  X = \sum_{i = 1}^n E_i
-\]
+\[ X = \sum_{i = 1}^n E_i \]
 
 La probabilità di \( i \) selezioni di successo allora è
 \begin{align*}
@@ -130,34 +126,26 @@ dove \( D_k^n \) è una disposizione semplice\footnote{vedi definizione \ref{def
 \begin{definition}[Distribuzione congiunta]
   \label{def:distribuzione_congiunta}
   La funzione che definisce la probabilità di eventi definiti in termini di due numeri aleatori \( X \) ed \( Y \):
-  \[
-    p(x,y) \equiv \pr(X = x, Y = y)
-  \]
+  \[ p(x,y) \equiv \pr(X = x, Y = y) \]
   dove:
-  \[
-    (x,y) \in I(X,Y)
-  \]
+  \[ (x,y) \in I(X,Y) \]
 \end{definition}
 È possibile rappresentare l'insieme dei valori che può assumere la funzione tramite la matrice:
 \[
-  \begin{pmatrix}
-    p(x_1, y_1) & \dots & p(x_1, y_n) \\
-    \vdots & \ddots & \vdots \\
-    p(x_m, y_1) & \dots & p(x_m, y_n)
-  \end{pmatrix}
+\begin{pmatrix}
+  p(x_1, y_1) & \dots & p(x_1, y_n) \\
+  \vdots & \ddots & \vdots \\
+  p(x_m, y_1) & \dots & p(x_m, y_n)
+\end{pmatrix}
 \]
 
 Inoltre:
-\[
-  \sum_x \sum_y p(x,y) = 1
-\]
+\[ \sum_x \sum_y p(x,y) = 1 \]
 
 \begin{definition}[Distribuzione marginale]
   \label{def:distribuzione_marginale}
   Dato un numero aleatorio \( X \) è la funzione
-  \[
-    p(x) \equiv \pr(X = x)
-  \]
+  \[ p(x) \equiv \pr(X = x) \]
 
   Conoscendo la distribuzione congiunta possiamo determinare la marginale, perché
   \begin{align*}
@@ -175,9 +163,7 @@ Inoltre:
 
 \begin{definition}[Indipendenza stocastica tramite la distribuzioni marginale]
   Due numeri aleatori \( X \) ed \( Y \) sono stocasticamente indipendenti se
-  \[
-    \forall i,j ~~ p(x_i, y_j) = p_1(x_i) p_2(y_j)
-  \]
+  \[ \forall i,j ~~ p(x_i, y_j) = p_1(x_i) p_2(y_j) \]
 \end{definition}
 % TODO gli appunti finiscono qui, ma sul libro a questo punto c'è altra roba...
 
@@ -186,7 +172,7 @@ Inoltre:
 \section{Distribuzione geometrica} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_geometrica}
-  \caption{Distribuzione geometrica} 
+  \caption{Distribuzione geometrica}
 \end{figure*}
 
 \begin{definition}[Distribuzione geometrica]\label{def:distribuzione_geometrica}
@@ -194,18 +180,14 @@ Inoltre:
 \end{definition}
 
 Dato uno schema di Bernoulli \( E_i \) ed un numero aleatorio \( T \) che rappresenta l'istante del primo successo in una serie di prove, ovvero \( T = \inf\{ n | E_n = 1 \} \).
-\[
-  I(T) = \mathbb{N} \setminus \{ 0 \}
-\]
-\[
-  (T = i) = \tilde{E}_1 \cdots \tilde{E}_{i-1} E_i
-\]
+\[ I(T) = \mathbb{N} \setminus \{ 0 \} \]
+\[ (T = i) = \tilde{E}_1 \cdots \tilde{E}_{i-1} E_i \]
 
 La distribuzione discreta di probabilità è
 \begin{align*}
   \pr(T = i) &= \pr(\tilde{E}_1 \cdots \tilde{E}_{i-1} E_i) \\
   &= \pr(\tilde{E}_1) \cdots \pr(\tilde{E}_{i-1}) \pr(E_i) \\
-  &= (1-p)^{i-1} p  
+  &= (1-p)^{i-1} p
 \end{align*}
 
 Si dice che \( T \) ha distribuzione geometrica di parametro \( p \).
@@ -219,11 +201,11 @@ Utilizzando la somma della serie geometrica, si verifica che
 
 % DOUBT come si chiama questo teorema?
 \marginnote{Per ottenere questi ultimi due risultati abbiamo usato la serie notevole
-\begin{align*}
-  \sum_{i=1}^{+ \infty} i x^{i-1} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
-  &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
-  &= \frac{d}{dx} (\frac{1}{1-x}) \\
-  &= \frac{1}{(1-x)^2}
+  \begin{align*}
+    \sum_{i=1}^{+ \infty} i x^{i-1} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
+    &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
+    &= \frac{d}{dx} (\frac{1}{1-x}) \\
+    &= \frac{1}{(1-x)^2}
 \end{align*}}
 
 \newthought{Possiamo dunque calcolare la previsione di \( T \)}:
@@ -248,7 +230,7 @@ Utilizzando la somma della serie geometrica, si verifica che
 \section{Distribuzione di Poisson} % (fold)
 \begin{figure*}
   \includegraphics{distribuzione_di_poisson}
-  \caption{Distribuzione di Poisson} 
+  \caption{Distribuzione di Poisson}
 \end{figure*}
 
 \begin{definition}[Distribuzione di Poisson]
@@ -257,9 +239,7 @@ Utilizzando la somma della serie geometrica, si verifica che
   se questi eventi si verificano con una frequenza media nota e indipendentemente dal tempo passato dall'ultimo evento.
 
   È uguale a
-  \[
-    Pois(\lambda) \equiv \pr(X = i) = \frac{\lambda^i}{i!} e^{- \lambda}
-  \]
+  \[ Pois(\lambda) \equiv \pr(X = i) = \frac{\lambda^i}{i!} e^{- \lambda} \]
   dove \( \lambda \) è un numero reale positivo, pari al numero atteso di eventi che si verificano durante l'intervallo di tempo e \( I(X) = \mathbb{N} \).
 \end{definition}
 
@@ -295,14 +275,10 @@ Utilizzando la somma della serie geometrica, si verifica che
 \begin{definition}[Indipendenza di partizioni]
   \label{def:indipendenza_di_partizioni}
   Date due partizioni
-  \[
-    \mathcal{H} = (H_1, \ldots, H_m) \text{ e } \mathcal{L} = (L_1, \ldots, L_n)
-  \]
+  \[ \mathcal{H} = (H_1, \ldots, H_m) \text{ e } \mathcal{L} = (L_1, \ldots, L_n) \]
   \( \mathcal{H} \) e \( \mathcal{L} \) sono stocasticamente indipendenti se comunque prendo un evento della prima ed un evento della seconda
   \footnote{ovvero \( \forall i, j; ~ 1 \le i \le m, ~ 1 \le j \le n \)}
-  \[
-    \pr(H_i L_j) = \pr(H_i) \pr(L_j)
-  \]
+  \[ \pr(H_i L_j) = \pr(H_i) \pr(L_j) \]
 \end{definition}
 
 L'indipendenza di partizioni generalizza il caso degli eventi
@@ -310,17 +286,11 @@ L'indipendenza di partizioni generalizza il caso degli eventi
 perché ad un evento può corrispondere una partizione:
 \begin{definition}[Indipendenza di eventi tramite partizioni]
   Dati due numeri aleatori \( X \) ed \( Y \) con
-  \[
-    I(X) = \{ x_1, \ldots, x_m \}, ~ I(Y) = \{ y_1, \ldots, y_n \}
-  \]
+  \[ I(X) = \{ x_1, \ldots, x_m \}, ~ I(Y) = \{ y_1, \ldots, y_n \} \]
   definiamo gli eventi
-  \[
-    H_i = (X = x_i), ~ L_j = (Y = y_i)
-  \]
+  \[ H_i = (X = x_i), ~ L_j = (Y = y_i) \]
   e le partizioni
-  \[
-    \mathcal{H} = (H_1, \ldots, H_m), ~ \mathcal{L} = (L_1, \ldots, L_n)
-  \]
+  \[ \mathcal{H} = (H_1, \ldots, H_m), ~ \mathcal{L} = (L_1, \ldots, L_n) \]
   \( X \) ed \( Y \) si dicono stocasticamente indipendenti se lo sono le partizioni \( \mathcal{H} \) ed \( \mathcal{L} \).
 \end{definition}
 % section indipendenza_di_partizioni (end)

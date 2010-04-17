@@ -86,7 +86,7 @@ Per dichiarare un evento si usa la seguente sintassi:
 che indica che se la condizione si verifica allora \( E = 1 \), altrimenti \( E = 0 \).
 
 \begin{definition}[Asserzione]\label{def:asserzione}
-  Se $E$ è una proposizione o un evento allora, usando il simbolo $\vdash$ come prefisso, \( \vdash E \) diventa l'asserzione che ``$E$ è certo''. 
+  Se $E$ è una proposizione o un evento allora, usando il simbolo $\vdash$ come prefisso, \( \vdash E \) diventa l'asserzione che ``$E$ è certo''.
 \end{definition}
 
 \begin{definition}[Implicazione]\label{def:implicazione}
@@ -181,14 +181,14 @@ I costituenti possibili costituiscono una partizione:
   Un particolare evento $E$ si dice:
   \begin{itemize}
   \item \emph{logicamente dipendente}
-  \footnote{è sempre possibile determinarlo, dati i risultati degli eventi \( E_1, \ldots, E_n \)}
-  dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del I o del II tipo
+    \footnote{è sempre possibile determinarlo, dati i risultati degli eventi \( E_1, \ldots, E_n \)}
+    dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del I o del II tipo
   \item \emph{logicamente indipendente}
-  \footnote{il risultato di $E$ rimane incerto (possibile) anche quando il risultato di tutti gli altri, qualsiasi esso sia, è noto}
-  dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del III tipo
+    \footnote{il risultato di $E$ rimane incerto (possibile) anche quando il risultato di tutti gli altri, qualsiasi esso sia, è noto}
+    dagli eventi \( E_1, \ldots, E_n \) se tutti i costituenti di \( E_1, \ldots, E_n \) sono del III tipo
   \item \emph{logicamente semidipendente}
-  \footnote{il risultato di $E$ \emph{potrebbe} dipendere dai risultati degli altri eventi}
-  dagli eventi \( E_1, \ldots, E_n \) altrimenti
+    \footnote{il risultato di $E$ \emph{potrebbe} dipendere dai risultati degli altri eventi}
+    dagli eventi \( E_1, \ldots, E_n \) altrimenti
   \end{itemize}
 \end{definition}
 
@@ -217,7 +217,7 @@ Tramite la coerenza, possiamo dunque definire in modo operazionale la previsione
 
 \begin{definition}[Primo criterio di coerenza]\label{def:criterio_coerenza_1_previsione}
   Dato un numero aleatorio $X$ siamo obbligati a scegliere un certo valore \( \pr(X) = \bar{x} \), in modo tale che riusciamo ad accettare qualsiasi scommessa con guadagno
-    \[ G = \lambda(X-\bar{x}) \]
+  \[ G = \lambda(X-\bar{x}) \]
   dove \( \lambda \in \mathbb{R} \) è scelto dall'avversario.
 
   Dunque la scelta di $\bar{x}$ per essere coerente non deve portare a perdite certe. In tal caso \( \pr(X) \) è la previsione di $X$.
@@ -227,8 +227,8 @@ Tramite la coerenza, possiamo dunque definire in modo operazionale la previsione
   Dato un numero aleatorio $X$ soffriamo di una penalità
   \[ P = \left(\frac{X-\bar{x}}{\lambda}\right)^2 \]
   \marginnote{Questa è la definizione secondo De Finetti.
-  Un'altra definizione potrebbe essere
-  \[ P = - \lambda (X - \bar{x})^2 \]}
+    Un'altra definizione potrebbe essere
+    \[ P = - \lambda (X - \bar{x})^2 \]}
   nella quale possiamo scegliere il valore \( \pr(X) = \bar{x} \) e \( \lambda \in \mathbb{R} \) è fissato.
 
   Dunque la scelta di $\bar{x}$ per essere coerente deve portare alla penalità minore. In tal caso \( \pr(X) \) è la previsione di $X$.
@@ -664,9 +664,7 @@ Se \( \var(X) = 0 \) allora tutta la probabilità è concentrata nella prevision
 
 \begin{definition}[Seconda disuguaglianza di Čebyšëv]\label{def:chebyshev2}
   Sia un numero aleatorio $X$ con \( \var(X) > 0 \). Posto \( m = \pr(X) \), \( \forall t > 0 \) si ha che:
-  \[
-  \pr(|X - m) \ge \sqm(X)t) \le \frac{1}{t^2}
-  \]
+  \[ \pr(|X - m) \ge \sqm(X)t) \le \frac{1}{t^2} \]
 \end{definition}
 
 \begin{proof}

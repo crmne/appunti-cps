@@ -5,25 +5,19 @@ Il calcolo combinatorio è una branca della matematica che studia l'enumerazione
 \section{Disposizioni} % (fold)
 \begin{definition}[Disposizione con ripetizione]
   Il numero di modi di prendere $k$ elementi \textbf{ordinati} da $n$ possibili \textbf{con ripetizione}.
-  \[
-  n \cdot n \cdots n = n^k
-  \]
+  \[ n \cdot n \cdots n = n^k \]
 \end{definition}
 Perché il primo elemento può essere scelto tra $n$ elementi, il secondo anche, e così via fino al $k$-esimo elemento.
 
 \begin{definition}[Disposizione semplice]\label{def:disposizione_semplice}
   Il numero di modi di prendere $k$ elementi \textbf{ordinati} da $n$ possibili \textbf{senza ripetizione}.
-  \[
-  n \cdot (n - 1) \cdots (n - k + 1) = \frac{n!}{(n-k!)}
-  \]
+  \[ n \cdot (n - 1) \cdots (n - k + 1) = \frac{n!}{(n-k!)} \]
 \end{definition}
 Perché il primo elemento può essere scelto tra $n$ elementi, il secondo tra $n - 1$ elementi, il terzo tra $n - 2$ e così via fino all'$k$-esimo elemento.
 
 \begin{definition}[Permutazione]
   È una disposizione semplice con $k = n$.
-  \[
-  \frac{n!}{(n - n)!} = n!
-  \]
+  \[ \frac{n!}{(n - n)!} = n! \]
 \end{definition}
 
 % section disposizioni (end)
@@ -31,17 +25,13 @@ Perché il primo elemento può essere scelto tra $n$ elementi, il secondo tra $n
 \section{Combinazioni} % (fold)
 \begin{definition}[Combinazione semplice]
   Il numero di modi di prendere $k$ elementi \textbf{non ordinati} da $n$ possibili \textbf{senza ripetizione}. Conosciuto anche come coefficiente binomiale.
-  \[
-  \binom{n}{k} = \frac{n!}{k!(n-k)!}
-  \]
+  \[ \binom{n}{k} = \frac{n!}{k!(n-k)!} \]
 \end{definition}
 % TODO spiegare perché si usa la combinazione semplice
 
 \begin{definition}[Combinazione con ripetizione]
   Il numero di modi di prendere $k$ elementi \textbf{non ordinati} da $n$ possibili \textbf{con ripetizione}.
-  \[
-  \binom{n+k-1}{k} = (n - 1, k)!
-  \]
+  \[ \binom{n+k-1}{k} = (n - 1, k)! \]
   dove \( (n - 1, k)! \) è un coefficiente multinomiale\footnote{vedi definizione \ref{def:coefficiente_multinomiale}}.
 \end{definition}
 % TODO spiegare perché si usa la combinazione con ripetizione
@@ -51,9 +41,7 @@ Perché il primo elemento può essere scelto tra $n$ elementi, il secondo tra $n
 \section{Coefficiente multinomiale} % (fold)
 \begin{definition}\label{def:coefficiente_multinomiale}
   Il numero di modi di formare $k$ gruppi di \( n_1, \ldots, n_k \) elementi ciascuno.
-  \[
-  (n_1, n_2, \ldots, n_k)! = \frac{(n_1 + n_2 + \ldots + n_k)!}{n_1! \cdot n_2! \cdots n_k!}
-  \]
+  \[ (n_1, n_2, \ldots, n_k)! = \frac{(n_1 + n_2 + \ldots + n_k)!}{n_1! \cdot n_2! \cdots n_k!} \]
 \end{definition}
 % TODO spiegare perché si usa il coefficiente multinomiale
 
