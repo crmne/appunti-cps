@@ -17,10 +17,10 @@ int H = 10;
 int Nt = 20;
 
 histogram(hypergeomDistr(n,H,Nt), fillpen=fillpen, drawpen=drawpen, bars=bars,
-  legend="$\mathcal{H}(n="+(string)n+",\; H="+(string)H+",\; N="+(string)Nt+")$");
+  legend="$\mathcal{HG}(n="+(string)n+",\; H="+(string)H+",\; N="+(string)Nt+")$");
 
-xaxis("$i$",Bottom,RightTicks);
-yaxis("$\textbf{P}(X = i)$",Left,LeftTicks(trailingzero));
+xaxis("$k$",Bottom,RightTicks);
+yaxis("$\textbf{P}(X = k)$",Left,LeftTicks(trailingzero));
 real xp = truepoint(E).x;
 real yp = truepoint(N).y;
-attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/4),UnFill);
+attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/5.5),UnFill);

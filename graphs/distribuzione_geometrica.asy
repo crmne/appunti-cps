@@ -16,8 +16,8 @@ real p = 0.2;
 histogram(geomDistr(p), fillpen=fillpen, drawpen=drawpen, bars=bars,
   legend='$\mathcal{G}(p='+(string)p+')$');
 
-xaxis("$i$",Bottom,RightTicks);
-yaxis("$\textbf{P}(T = i)$",Left,LeftTicks(trailingzero));
+xaxis("$k$",Bottom,RightTicks);
+yaxis("$\textbf{P}(X = k)$",Left,LeftTicks(trailingzero));
 real xp = truepoint(E).x;
 real yp = truepoint(N).y;
 attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/4),UnFill);

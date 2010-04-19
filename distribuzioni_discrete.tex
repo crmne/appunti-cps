@@ -40,7 +40,7 @@
   \[ X = (E_1 + \ldots + E_n) \]
   è il numero di successi su \( n \) prove dove, ovviamente,
   \[ I(X) = \{0, \ldots, n\} \]
-  
+
   La distribuzione di probabilità dunque è, tramite i costituenti:
   \[ \pr(X = k) = \sum_{Q \subset (X = k)} \pr(Q) \]
   ovvero dobbiamo sommare tutte le probabilità dei costituenti del primo tipo dell'evento \( (X = k) \), come, ad esempio
@@ -49,7 +49,7 @@
   Analogamente ogni altro costituente di \( (X = k) \) conterrà \( k \) eventi che si sono verificati e \( n-k \) che non si sono verificati.
   Siccome tutti gli eventi sono indipendenti ed equamente distribuiti, ogni costituente \( Q \) ha la stessa probabilità, pari a
   \[ \pr(Q) = p^k (1-p)^{n-k} \]
-  
+
   Dunque per avere \( \pr(X = k) \), basta contare i costituenti.
   Essi sono uguali al numero di modi di scegliere i \( k \) eventi che si verificano sugli \( n \) totali. Si ottiene quindi
   \[ \pr(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
@@ -100,7 +100,7 @@
   \marginnote{La distribuzione ipergeometrica è simile alla distribuzione binomiale, che però descrive il numero di successi per \( n \) eventi \emph{indipendenti}, vedi \ref{def:distribuzione_binomiale}.}
   La distribuzione discreta di probabilità che descrive il numero di successi in una sequenza di  \( n \) eventi dipendenti, date \( H \) possibilità di successo su \( N \) possibilità totali.
 
-  \[ \mathcal{H}(n, H, N) \equiv \pr(X = i) = \frac{\binom{H}{i} \binom{N-H}{n-i}}{\binom{N}{n}} \]
+  \[ \mathcal{HG}(n, H, N) \equiv \pr(X = k) = \frac{\binom{H}{k} \binom{N-H}{n-k}}{\binom{N}{n}} \]
 \end{definition}
 
 % TODO vincoli
@@ -112,14 +112,14 @@
   Sia \( X \) il numero aleatorio che conta il numero di successi:
   \[ X = \sum_{i = 1}^n E_i \]
 
-  Allora la probabilità di avere \( i \) successi è
+  Allora la probabilità di avere \( k \) successi è
   \marginnote{Il numero di casi possibili equivale a tutti i modi di effettuare \( n \) selezioni su \( N \) possibilità totali senza ripetizione e senza tener conto dell'ordine, ovvero ad una combinazione semplice, vedi definizione \ref{def:combinazione_semplice}.
 
-  Otteniamo analogamente i casi possibili, tenendo conto che per ottenere \( i \) successi dobbiamo ottenere \( n - i \) fallimenti.}
+    Otteniamo analogamente i casi possibili, tenendo conto che per ottenere \( k \) successi dobbiamo ottenere \( n - k \) fallimenti.}
   \begin{align*}
-    \pr(X = i) &= \frac{\text{\# casi favorevoli}}{\text{\# casi possibili}} \\
-    &= \frac{(\text{\# modi per }i\text{ successi})(\text{\# modi per }n - i\text{ fallimenti})}{\text{\# casi possibili}} \\
-    &= \frac{\binom{H}{i} \binom{N-H}{n-i}}{\binom{N}{n}}
+    \pr(X = k) &= \frac{\text{\# casi favorevoli}}{\text{\# casi possibili}} \\
+    &= \frac{(\text{\# modi per }k\text{ successi})(\text{\# modi per }n - k\text{ fallimenti})}{\text{\# casi possibili}} \\
+    &= \frac{\binom{H}{k} \binom{N-H}{n-k}}{\binom{N}{n}}
   \end{align*}
 
   Si dice dunque che \( X \) possiede distribuzione ipergeometrica.
@@ -199,55 +199,75 @@ Inoltre:
 
 \begin{definition}[Distribuzione geometrica]
   \label{def:distribuzione_geometrica}
-  La distribuzione discreta della probabilità di ottenere il primo successo all'istante \( i \) in una serie di prove.
+  La distribuzione discreta di probabilità che descrive l'istante nel quale si verifica il primo successo in una serie di prove, dove ogni prova ha la stessa probabilità \( p \).
+
+  \[ \mathcal{G}(p) \equiv \pr(X = k) = (1-p)^{k-1} p \]
 \end{definition}
 
-Dato uno schema di Bernoulli \( E_i \) ed un numero aleatorio \( T \) che rappresenta l'istante del primo successo in una serie di prove, ovvero \( T = \inf\{ n | E_n = 1 \} \).
-\[ I(T) = \mathbb{N} \setminus \{ 0 \} \]
-\[ (T = i) = \tilde{E}_1 \cdots \tilde{E}_{i-1} E_i \]
+\begin{proof}
+  Dato uno schema di Bernoulli \( E_i \) ed un numero aleatorio \( X \) che rappresenta l'istante del primo successo in una serie di prove, ovvero \( X = \inf\{ n | E_n = 1 \} \).
+  \marginnote{Includendo lo \( 0 \) nell'insieme dei valori possibili l'intera distribuzione è traslata di \( -1 \) sull'asse delle ascisse, in modo da avere il picco a \( 0 \).
 
-La distribuzione discreta di probabilità è
-\begin{align*}
-  \pr(T = i) &= \pr(\tilde{E}_1 \cdots \tilde{E}_{i-1} E_i) \\
-  &= \pr(\tilde{E}_1) \cdots \pr(\tilde{E}_{i-1}) \pr(E_i) \\
-  &= (1-p)^{i-1} p
-\end{align*}
+  Dunque la funzione di densità di probabilità diventa
+  \[ \mathcal{G}(p) \equiv \pr(X = k) = (1-p)^k p \]}
+  \[ I(X) = \mathbb{N} \setminus \{ 0 \} \]
+  \[ (X = k) = \tilde{E}_1 \cdots \tilde{E}_{k-1} E_k \]
 
-Si dice che \( T \) ha distribuzione geometrica di parametro \( p \).
-Utilizzando la somma della serie geometrica, si verifica che
-\begin{align*}
-  \sum_{i=1}^{+ \infty} \pr(T = i) &= \sum_{i=1}^{+ \infty} (1-p)^{i-1} p \\
-  &= p \sum_{i=1}^{+ \infty} (1-p)^{i-1}  \\
-  &= p \frac{1}{1-(1-p)} \\
-  &= 1
-\end{align*}
-
-% DOUBT come si chiama questo teorema?
-\marginnote{Per ottenere questi ultimi due risultati abbiamo usato la serie notevole
+  La distribuzione discreta di probabilità è
   \begin{align*}
-    \sum_{i=1}^{+ \infty} i x^{i-1} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
-    &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
-    &= \frac{d}{dx} (\frac{1}{1-x}) \\
-    &= \frac{1}{(1-x)^2}
+    \pr(X = k) &= \pr(\tilde{E}_1 \cdots \tilde{E}_{k-1} E_k) \\
+    &= \pr(\tilde{E}_1) \cdots \pr(\tilde{E}_{k-1}) \pr(E_k) \\
+    &= (1-p)^{k-1} p
   \end{align*}
-}
 
-\newthought{Possiamo dunque calcolare la previsione di \( T \)}:
-\begin{align*}
-  \pr(T) &= \sum_{i=1}^{+ \infty} i \pr(T = i) \\
-  &= \sum_{i=1}^{+ \infty} i (i - p)^{i-1} p \\
-  &= p \sum_{i=1}^{+ \infty} i (i - p)^{i-1} \\
-  &= p \frac{1}{p^2} \\
-  &= \frac{1}{p}
-\end{align*}
+  Si dice dunque che \( X \) ha distribuzione geometrica di parametro \( p \).
+\end{proof}
 
-% TODO dimostrare perché \pr(T^2) = \frac{2-p}{p^2}
-\newthought{E, dato \( \pr(T^2) = \frac{2-p}{p^2} \), la sua varianza}:
-\begin{align*}
-  \var(T) &= \pr(T^2) - \pr(T)^2 \\
-  &= \frac{2-p}{p^2} - \frac{1}{p^2} \\
-  &= \frac{1-p}{p^2}
-\end{align*}
+\begin{proposition}[Previsione di \( X \) con distribuzione geometrica]
+  \[ \pr(X) = \frac{1}{p} \]
+\end{proposition}
+
+\begin{proof}
+  Utilizzando la somma della serie geometrica, si verifica che
+  \marginnote{Qui usiamo la serie notevole
+    \begin{align*}
+      \sum_{i=1}^{+ \infty} i x^{i-1} &= \sum_{i=1}^{+ \infty} \frac{d}{dx}[x^i] \\
+      &= \frac{d}{dx} (\sum_{i=0}^{+ \infty} x^i) \\
+      &= \frac{d}{dx} (\frac{1}{1-x}) \\
+      &= \frac{1}{(1-x)^2}
+    \end{align*}
+  }
+  \begin{align*}
+    \sum_{k=1}^{+ \infty} \pr(X = k) &= \sum_{k=1}^{+ \infty} (1-p)^{k-1} p \\
+    &= p \sum_{k=1}^{+ \infty} (1-p)^{k-1}  \\
+    &= p \frac{1}{1-(1-p)} \\
+    &= 1
+  \end{align*}
+
+  Possiamo dunque calcolare la previsione di \( X \):
+  \begin{align*}
+    \pr(X) &= \sum_{k=1}^{+ \infty} k \pr(X = k) \\ % DOUBT perché?
+    &= \sum_{k=1}^{+ \infty} k (k - p)^{k-1} p \\
+    &= p \sum_{k=1}^{+ \infty} k (k - p)^{k-1} \\
+    &= p \frac{1}{p^2} \\
+    &= \frac{1}{p}
+  \end{align*}
+\end{proof}
+
+\begin{proposition}[Varianza di \( X \) con distribuzione geometrica]
+  \[ \var(X) = \frac{1-p}{p^2} \]
+\end{proposition}
+
+\begin{proof}
+  Dato che
+  \[ \pr(X^2) = \frac{2-p}{p^2} \] % TODO dimostrare
+  abbiamo
+  \begin{align*}
+    \var(X) &= \pr(X^2) - \pr(X)^2 \\
+    &= \frac{2-p}{p^2} - \frac{1}{p^2} \\
+    &= \frac{1-p}{p^2}
+  \end{align*}
+\end{proof}
 
 % section distribuzione_geometrica (end)
 
@@ -259,47 +279,56 @@ Utilizzando la somma della serie geometrica, si verifica che
 
 \begin{definition}[Distribuzione di Poisson]
   \label{def:distribuzione_di_poisson}
-  La distribuzione discreta della probabilità di ottenere \( i \) successi in un intervallo di tempo fissato,
-  se questi eventi si verificano con una frequenza media nota e indipendentemente dal tempo passato dall'ultimo evento.
+  La distribuzione discreta di probabilità che descrive la probabilità di una serie di eventi che si verificano in un determinato periodo di tempo, se questi eventi si verificano con una frequenza media \( \lambda \) nota e indipendentemente dal tempo passato dall'ultimo evento.
 
   È uguale a
-  \[ Pois(\lambda) \equiv \pr(X = i) = \frac{\lambda^i}{i!} e^{- \lambda} \]
+  \[ \mathcal{P}(\lambda) \equiv \pr(X = k) = \frac{\lambda^k}{k!} e^{- \lambda} \]
   dove \( \lambda \) è un numero reale positivo, pari al numero atteso di eventi che si verificano durante l'intervallo di tempo e \( I(X) = \mathbb{N} \).
 \end{definition}
 
 \begin{proposition}[Previsione di \( X \) con distribuzione di Poisson]
   \label{pro:previsione_distribuzione_di_poisson}
+  \[ \pr(X) = \lambda \]
+\end{proposition}
+
+\begin{proof}
   \marginnote{Utilizziamo la serie notevole \[ \sum_{k=0}^{+ \infty} \frac{x^k}{k!} = e^x \] e la definizione di fattoriale \[ i! = i(i-1)! \]}
   \begin{align*}
-    \pr(X) &= \sum_{i=0}^{+ \infty} i \pr(X = i) \\
-    &= \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!} e^{- \lambda} \\
-    &= e^{- \lambda} \sum_{i=0}^{+ \infty} \frac{\lambda^i}{(i-1)!} \\
-    &= \lambda e^{- \lambda} \sum_{i=1}^{+ \infty} \frac{\lambda^{i-1}}{(i-1)!} \\
-    &= \lambda e^{- \lambda} \sum_{i=0}^{+ \infty} \frac{\lambda^{i}}{i!} \\
+    \pr(X) &= \sum_{k=0}^{+ \infty} k \pr(X = k) \\
+    &= \sum_{k=0}^{+ \infty} k \frac{\lambda^k}{k!} e^{- \lambda} \\
+    &= e^{- \lambda} \sum_{k=0}^{+ \infty} \frac{\lambda^k}{(k-1)!} \\
+    &= \lambda e^{- \lambda} \sum_{k=1}^{+ \infty} \frac{\lambda^{k-1}}{(k-1)!} \\
+    &= \lambda e^{- \lambda} \sum_{k=0}^{+ \infty} \frac{\lambda^{k}}{k!} \\
     &= \lambda e^{- \lambda} e^\lambda \\
     &= \lambda
   \end{align*}
-\end{proposition}
-% TODO organizzare in proposizioni e dimostrazioni
+\end{proof}
+
 \begin{proposition}[Varianza di \( X \) con distribuzione di Poisson]
   \label{pro:varianza_distribuzione_di_poisson}
+  \[ \var(X) = \lambda \]
+\end{proposition}
+
+\begin{proof}
+  Dato che
   \begin{align*}
-    \pr(X^2) &= \sum_{i=0}^{+ \infty} i^2 \pr(X = i) \\
-    &= \sum_{i=0}^{+ \infty} i^2 \frac{\lambda^i}{i!} e^{- \lambda} \\
-    &= \sum_{i=0}^{+ \infty} [(i^2 - i) + i] \frac{\lambda^i}{i!} e^{- \lambda} \\
-    &= e^{- \lambda} (\sum_{i=0}^{+ \infty} i(i - 1) \frac{\lambda^i}{i(i-1)(i-2)!} + \sum_{i=0}^{+ \infty} i \frac{\lambda^i}{i!}) \\
-    &= e^{- \lambda} (\sum_{i=0}^{+ \infty} \frac{\lambda^i}{(i-2)!} + \lambda e^\lambda) \\
-    &= e^{- \lambda} (\lambda^2 \sum_{i=2}^{+ \infty} \frac{\lambda^{i-2}}{(i-2)!} + \lambda e^\lambda) \\
-    &= e^{- \lambda} (\lambda^2 \sum_{i=0}^{+ \infty} \frac{\lambda^i}{i!} + \lambda e^\lambda) \\
+    \pr(X^2) &= \sum_{k=0}^{+ \infty} k^2 \pr(X = k) \\
+    &= \sum_{k=0}^{+ \infty} k^2 \frac{\lambda^k}{k!} e^{- \lambda} \\
+    &= \sum_{k=0}^{+ \infty} [(k^2 - k) + k] \frac{\lambda^k}{k!} e^{- \lambda} \\
+    &= e^{- \lambda} (\sum_{k=0}^{+ \infty} k(k - 1) \frac{\lambda^k}{k(k-1)(k-2)!} + \sum_{k=0}^{+ \infty} k \frac{\lambda^k}{k!}) \\
+    &= e^{- \lambda} (\sum_{k=0}^{+ \infty} \frac{\lambda^k}{(k-2)!} + \lambda e^\lambda) \\
+    &= e^{- \lambda} (\lambda^2 \sum_{k=2}^{+ \infty} \frac{\lambda^{k-2}}{(k-2)!} + \lambda e^\lambda) \\
+    &= e^{- \lambda} (\lambda^2 \sum_{k=0}^{+ \infty} \frac{\lambda^k}{k!} + \lambda e^\lambda) \\
     &= e^{- \lambda} (\lambda^2 e^\lambda + \lambda e^\lambda) \\
     &= \lambda^2 + \lambda
   \end{align*}
+  abbiamo
   \begin{align*}
     \var(X) &= \pr(X^2) - \pr(X)^2 \\
     &= \lambda^2 + \lambda - \lambda^2 \\
     &= \lambda
   \end{align*}
-\end{proposition}
+\end{proof}
 
 % section distribuzione_di_poisson (end)
 
