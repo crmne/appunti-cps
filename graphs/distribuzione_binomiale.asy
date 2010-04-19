@@ -15,7 +15,7 @@ histogram(binomDistr(n,p), fillpen=fillpen, drawpen=drawpen, bars=bars,
   legend="$\mathcal{B}(n="+(string)n+",\; p="+(string)p+")$");
 
 xaxis("$k$",Bottom,RightTicks);
-yaxis("$\textbf{P}(S_n = k)$",Left,LeftTicks(trailingzero));
+yaxis("$\textbf{P}(X = k)$",Left,LeftTicks(trailingzero));
 real xp = truepoint(E).x;
 real yp = truepoint(N).y;
 attach(scale(0.75)*legend(), (xp - xp/3.5, yp - yp/4),UnFill);
